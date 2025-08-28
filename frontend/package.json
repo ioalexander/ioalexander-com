@@ -5,7 +5,9 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate:blog": "ts-node generation/generate-blog.ts",
+    "generate:nuxt": "nuxt generate",
+    "generate": "yarn generate:blog && yarn generate:nuxt",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -15,5 +17,9 @@
     "nuxt": "^4.0.3",
     "vue": "^3.5.20",
     "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "sass": "^1.91.0"
   }
 }

@@ -1,0 +1,29 @@
+:root {
+  --color-primary: #1a73e8;
+  --color-secondary: #fbbc05;
+
+  --text-primary: #d3d3d3;
+  --text-secondary: #ffffff;
+  --text-accent: var(--color-primary);
+  --background: #000;
+
+  --max-content-width: 1300px;
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--background);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--text-primary);
+  font-size: 20px;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}

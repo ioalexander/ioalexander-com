@@ -21,5 +21,5 @@ AppDataSource.initialize().then(() => {
     { prefix: "/api" },
   );
 
-  app.listen({ port: 3000 }, () => console.log("Server running on 3000"));
+  app.listen({ port: 4000 }, () => console.log("Server running on 400"));
 });
