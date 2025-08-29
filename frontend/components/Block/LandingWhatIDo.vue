@@ -1,5 +1,9 @@
 <template>
-  <LandingSection :class="$style.whatIDo" ref="section">
+  <LandingSection
+    :class="$style.whatIDo"
+    ref="section"
+    :style="{ opacity: sectionOpacity }"
+  >
     <LandingMaxWidth>
       <LandingSplit4060>
         <div :class="$style.left">
@@ -27,14 +31,16 @@
                 :class="$style.step"
                 v-for="(step, index) in steps"
                 :key="index"
-                :style="getStepStyle(index) as any"
+                :style="stepStyles[index] as any"
               >
                 <h2 :class="$style.title">{{ step.title }}</h2>
                 <p
                   :class="$style.subText"
                   :style="{
-                    fontSize: getStepStyle(index).textOpacity * 20 + 'px',
-                    transition: getStepStyle(index).transition,
+                    height: stepStyles[index]?.textOpacity * 60 + 'px',
+                    opacity: stepStyles[index]?.textOpacity,
+                    overflow: 'hidden',
+                    transition: stepStyles[index]?.transition,
                   }"
                 >
                   {{ step.text }}
@@ -72,7 +78,9 @@ const steps = [
   },
 ];
 
+const sectionOpacity = ref(1);
 const scrollProgress = ref(0);
+const stepStyles = ref<any[]>([]);
 
 const getStepStyle = (index: number) => {
   const totalSteps = steps.length;
@@ -85,7 +93,6 @@ const getStepStyle = (index: number) => {
   let scale = minScale;
   let textOpacity = 0;
 
-  // scale + opacity (same as before)
   if (scrollProgress.value < stepStart || scrollProgress.value > stepEnd) {
     scale = minScale;
     textOpacity = 0;
@@ -103,18 +110,13 @@ const getStepStyle = (index: number) => {
     textOpacity = 1;
   }
 
-  // vertical position: active step stays at center
-  const centerY = 50; // percentage of container height
-  const offset = (index - Math.floor(scrollProgress.value * totalSteps)) * 100; // spacing between steps
-  const translateY = `calc(${centerY}% + ${offset}px)`;
-
   return {
     zIndex: scale === 1 ? 100 : 1,
-    transform: `translateY(${translateY}) scale(${scale})`,
+    transform: `scale(${scale})`,
     opacity: scale,
     textOpacity,
     transition:
-      "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease-in-out",
+      "transform 0.1s cubic-bezier(0.4,0,0.2,1), opacity 0.1s ease-in-out",
   };
 };
 
@@ -136,6 +138,14 @@ onMounted(() => {
       1,
       Math.max(0, (scrollY - topOfRight) / end),
     );
+
+    stepStyles.value = steps.map((_, index) => getStepStyle(index));
+
+    // fade out after 90% scroll
+    sectionOpacity.value =
+      scrollProgress.value < 0.9
+        ? 1
+        : Math.max(0, 1 - (scrollProgress.value - 0.9) / 0.1);
   };
 
   window.addEventListener("scroll", handleScroll);
@@ -146,11 +156,12 @@ onMounted(() => {
 <style lang="scss" module>
 .whatIDo {
   margin-top: 100px;
+  transition: opacity 1s ease-in-out;
 
   .left,
   .right {
     position: relative;
-    height: 4000px;
+    height: 3000px;
 
     .sticky {
       position: sticky;
@@ -172,7 +183,6 @@ onMounted(() => {
     .steps {
       position: relative;
       .step {
-        position: absolute;
         left: 0;
         right: 0;
         transform-origin: center center;
@@ -180,9 +190,12 @@ onMounted(() => {
         border-radius: 16px;
         filter: var(--blur);
 
+        margin-bottom: 20px;
+
         .title {
           font-size: 30px;
           color: var(--text-secondary);
+          margin-bottom: 10px;
         }
       }
     }
