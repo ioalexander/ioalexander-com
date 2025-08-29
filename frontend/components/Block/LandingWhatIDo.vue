@@ -26,6 +26,7 @@
         </div>
 
         <div ref="rightRef" :class="$style.right">
+          <div :class="$style.circle" />
           <div :class="$style.sticky" :offsetTop="300">
             <div :class="$style.steps">
               <ControlsPanel
@@ -81,7 +82,14 @@ const steps = [
 
 const sectionOpacity = ref(1);
 const scrollProgress = ref(0);
+const circleTop = ref(800);
 const stepStyles = ref<any[]>([]);
+
+const updateCirclePosition = () => {
+  const startTop = 800;
+  const endTop = 2000;
+  circleTop.value = startTop + (endTop - startTop) * scrollProgress.value;
+};
 
 const getStepStyle = (index: number) => {
   const totalSteps = steps.length;
@@ -222,6 +230,35 @@ onMounted(() => {
         }
       }
     }
+  }
+}
+
+.circle {
+  width: 800px;
+  height: 800px;
+  position: absolute;
+  left: 50%;
+  top: 800px;
+  transform: translate(-50%, 0%);
+  background: var(--color-accent);
+  border-radius: 100%;
+  filter: blur(100px);
+  z-index: -10;
+  opacity: 0.2;
+
+  @media all and (max-width: 1400px) {
+    left: 40%;
+  }
+
+  @media all and (max-width: 1200px) {
+    left: 0%;
+  }
+
+  @media all and (max-width: 500px) {
+    left: 0%;
+
+    width: 400px;
+    height: 400px;
   }
 }
 </style>
