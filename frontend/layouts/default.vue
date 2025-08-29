@@ -4,6 +4,7 @@
     <div :class="$style.content">
       <slot />
     </div>
+    <Footer />
   </div>
 </template>
 
