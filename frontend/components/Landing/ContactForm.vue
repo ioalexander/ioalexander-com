@@ -1,60 +1,76 @@
 <template>
   <form :class="$style.form" @submit.prevent="onSubmit()">
     <ControlsPanel :class="$style.panel">
-      <div :class="$style.row">
-        <ControlsInput
-          v-model="state.form.firstName"
-          label="First Name"
-          required-asterisk
-          :error="state.error.firstName"
-        >
-          <template #placeholder>E.g. John</template>
-        </ControlsInput>
-        <ControlsInput
-          v-model="state.form.lastName"
-          label="Last Name"
-          required-asterisk
-          :error="state.error.lastName"
-        >
-          <template #placeholder>E.g. Doe</template>
-        </ControlsInput>
-      </div>
-      <div :class="$style.row">
-        <ControlsInput
-          v-model="state.form.email"
-          label="E-mail address"
-          required-asterisk
-          :error="state.error.email"
-        >
-          <template #placeholder>E.g. johndoe@gmail.com</template>
-        </ControlsInput>
-        <ControlsInput
-          v-model="state.form.phone"
-          label="Phone Number"
-          :error="state.error.phone"
-        >
-          <template #placeholder>E.g. +1 3004005000</template>
-        </ControlsInput>
-      </div>
-      <ControlsSpacer :height="20" />
-      <ControlsTextarea
-        v-model="state.form.message"
-        label="Message"
-        :error="state.error.message"
-        required-asterisk
+      <div
+        :class="{
+          [$style.inputsScreen]: true,
+          [$style.isShown]: !state.isFormSubmitted,
+        }"
       >
-        <template #placeholder>
-          Enter your message here... <br />* Do not forget to write your contact
-          information!
-        </template>
-      </ControlsTextarea>
-      <ControlsSpacer :height="20" />
-      <ControlsTurnstile
-        v-model="state.form.turnstile"
-        :error="state.error.turnstile"
-      />
-      <ControlsSpacer :height="20" />
-      <button :class="$style.submit" type="submit">Submit</button>
+        <div :class="$style.row">
+          <ControlsInput
+            v-model="state.form.firstName"
+            label="First Name"
+            required-asterisk
+            :error="state.error.firstName"
+          >
+            <template #placeholder>E.g. John</template>
+          </ControlsInput>
+          <ControlsInput
+            v-model="state.form.lastName"
+            label="Last Name"
+            required-asterisk
+            :error="state.error.lastName"
+          >
+            <template #placeholder>E.g. Doe</template>
+          </ControlsInput>
+        </div>
+        <div :class="$style.row">
+          <ControlsInput
+            v-model="state.form.email"
+            label="E-mail address"
+            required-asterisk
+            :error="state.error.email"
+          >
+            <template #placeholder>E.g. johndoe@gmail.com</template>
+          </ControlsInput>
+          <ControlsInput
+            v-model="state.form.phone"
+            label="Phone Number"
+            :error="state.error.phone"
+          >
+            <template #placeholder>E.g. +1 3004005000</template>
+          </ControlsInput>
+        </div>
+        <ControlsSpacer :height="20" />
+        <ControlsTextarea
+          v-model="state.form.message"
+          label="Message"
+          :error="state.error.message"
+          required-asterisk
+        >
+          <template #placeholder>
+            Enter your message here... <br />* Do not forget to write your
+            contact information!
+          </template>
+        </ControlsTextarea>
+        <ControlsSpacer :height="20" />
+        <ControlsTurnstile
+          v-model="state.form.turnstile"
+          :error="state.error.turnstile"
+        />
+        <ControlsSpacer :height="20" />
+        <button :class="$style.submit" type="submit">Submit</button>
+      </div>
+      <div
+        :class="{
+          [$style.submittedScreen]: true,
+          [$style.isShown]: state.isFormSubmitted,
+        }"
+      >
+        <h3 :class="$style.title">Form submitted!</h3>
+        <p :class="$style.subTitle">You will be contacted shortly</p>
+      </div>
     </ControlsPanel>
   </form>
 </template>
@@ -80,6 +96,7 @@ const state = reactive({
     message: "",
     turnstile: "",
   },
+  isFormSubmitted: false,
   isSubmittingForm: false,
 });
 
@@ -134,6 +151,7 @@ const onSubmit = async () => {
     await api.form.submitContactForm(state.form);
 
     toast.success("Successfuly submited form!");
+    state.isFormSubmitted = true;
   } catch (e: unknown) {
     console.error("Failed to submit form:", e);
     let message = "Unknown";
@@ -155,23 +173,66 @@ const onSubmit = async () => {
   .panel {
     padding: 32px;
     border-radius: 16px;
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+
+    .inputsScreen {
+      opacity: 0;
+      pointer-events: none;
+      transition: 1s;
+
+      &.isShown {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .submit {
+        padding: 0 32px;
+        height: 48px;
+        background: var(--color-accent);
+        border-radius: 8px;
+        border: none;
+        color: var(--text-secondary);
+
+        &:hover {
+          filter: brightness(110%);
+        }
+      }
+    }
+  }
+
+  .submittedScreen {
+    opacity: 0;
+    pointer-events: none;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    transition: 1s;
+
+    &.isShown {
+      opacity: 1;
+      pointer-events: all;
     }
 
-    .submit {
-      padding: 0 32px;
-      height: 48px;
-      background: var(--color-accent);
-      border-radius: 8px;
-      border: none;
+    .title {
+      text-align: center;
       color: var(--text-secondary);
-
-      &:hover {
-        filter: brightness(110%);
-      }
+      font-size: 30px;
+    }
+    .subTitle {
+      text-align: center;
     }
   }
 }
