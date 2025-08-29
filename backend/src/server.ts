@@ -1,25 +1,17 @@
 import "reflect-metadata";
-import { DataSource } from "typeorm";
 import Fastify from "fastify";
+import dataSource from "../db/dataSource";
+import { formRoutes } from "./routes/form";
+import { healthRoutes } from "./routes/health";
 
-const app = Fastify({ logger: true });
+const app = Fastify({ logger: true, trustProxy: true });
 
-const AppDataSource = new DataSource({
-  type: "sqlite",
-  database: "db_data/data.db",
-  synchronize: false,
-  entities: [],
-});
+dataSource.initialize().then(() => {
+  const prefix = "/api";
+  app.register(healthRoutes, { prefix });
+  app.register(formRoutes, { prefix });
 
-AppDataSource.initialize().then(() => {
-  app.register(
-    async (fastify) => {
-      fastify.get("/health", async (req, reply) => {
-        reply.send({ success: true });
-      });
-    },
-    { prefix: "/api" },
+  app.listen({ port: 4000 }, () =>
+    console.log("Server running on http://localhost:4000"),
   );
-
-  app.listen({ port: 4000 }, () => console.log("Server running on 400"));
 });

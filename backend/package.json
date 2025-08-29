@@ -5,15 +5,28 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "migrate:up": "typeorm-ts-node-commonjs migration:run -d db/dataSource.ts",
+    "migrate:down": "typeorm-ts-node-commonjs migration:revert -d db/dataSource.ts",
+    "test": "clear && LOG_LEVEL=silent jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/supertest": "^6.0.3",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
     "fastify": "^5.5.0",
+    "geoip-lite": "^1.4.10",
+    "jest": "^30.1.1",
     "reflect-metadata": "^0.2.2",
     "sqlite3": "^5.1.7",
-    "typeorm": "^0.3.26"
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.1",
+    "typeorm": "^0.3.26",
+    "zod": "^4.1.5"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.4",
     "@types/node": "^24.3.0",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
