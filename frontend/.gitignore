@@ -26,7 +26,6 @@ logs
 # Generated files
 /pages/blog/*.vue
 !pages/blog/README.md
-!pages/blog/index.vue
 
 /public/generated/blog/*
 !/public/generated/blog/README.md

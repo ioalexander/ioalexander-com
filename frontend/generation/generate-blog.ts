@@ -7,7 +7,7 @@ import type { BlogPostItemManifest } from "~/types/blogPostItemManifest";
 const domain = process.env.NUXT_PUBLIC_DOMAIN || "http://localhost:3000";
 
 const blogDir = path.resolve("./data/blog");
-const pagesDir = path.resolve("./pages/blog");
+const pagesBlogDir = path.resolve("./pages/blog");
 const templatesDir = path.resolve("./generation/templates");
 const publicDir = path.resolve("./public");
 const publicBlogDir = path.join(publicDir, "/generated/blog");
@@ -17,7 +17,12 @@ const blogTemplate = fs.readFileSync(
   "utf-8",
 );
 
-if (!fs.existsSync(pagesDir)) {
+const blogIndexTemplate = fs.readFileSync(
+  path.join(templatesDir, "blogIndex.vue"),
+  "utf-8",
+);
+
+if (!fs.existsSync(pagesBlogDir)) {
   throw new Error("pagesDir does not exist");
 }
 
@@ -77,7 +82,7 @@ async function generateBlog() {
       .replaceAll("TEMPLATE_STRING_SLUG", slug)
       .replaceAll("TEMPLATE_STRING_FEATUREDIMAGE", featuredImageUrl);
 
-    const vuePath = path.join(pagesDir, `${slug.replace(".md", "")}.vue`);
+    const vuePath = path.join(pagesBlogDir, `${slug.replace(".md", "")}.vue`);
     fs.writeFileSync(vuePath, vueContent, "utf-8");
 
     indexData.postsCount++;
@@ -98,10 +103,16 @@ async function generateBlog() {
   }
 
   console.log("Generating blog index...");
-  const blogIndexJson = path.join(publicBlogDir, "index.json");
-  fs.writeFileSync(blogIndexJson, JSON.stringify(indexData, null, 2), "utf-8");
+
+  const blogIndexVueContent = blogIndexTemplate.replaceAll(
+    "TEMPLATE_STRING_BLOGINDEX",
+    JSON.stringify(indexData),
+  );
+
+  const blogIndexVuePath = path.join(pagesBlogDir, `index.vue`);
+  fs.writeFileSync(blogIndexVuePath, blogIndexVueContent, "utf-8");
   console.log(
-    `Generated blog index with ${indexData.postsCount} posts at: ${blogIndexJson}`,
+    `Generated blog index with ${indexData.postsCount} posts at: ${blogIndexVuePath}`,
   );
 }
 

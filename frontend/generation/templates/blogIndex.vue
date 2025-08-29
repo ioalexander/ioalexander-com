@@ -31,7 +31,7 @@ import { reactive } from "vue";
 import type { BlogIndex } from "~/types/blogIndex";
 import type { BlogPostItem } from "~/types/blogPostItem";
 
-const blogIndexRaw = `{"postsCount":2,"postItems":[{"slug":"hello-world","title":"Hello World","url":"/blog/hello-world","absoluteUrl":"http://localhost:3000/blog/hello-world","featuredImageUrl":"/generated/blog/hello-world/preview.webp","featuredImageAbsoluteUrl":"http://localhost:3000/generated/blog/hello-world/preview.webp","tags":["hello"],"createdAt":"01-01-2025"},{"slug":"slopsquatting-new-ai-vulnerability","title":"Slopsquatting: New AI Vulnerability","url":"/blog/slopsquatting-new-ai-vulnerability","absoluteUrl":"http://localhost:3000/blog/slopsquatting-new-ai-vulnerability","featuredImageUrl":"/generated/blog/slopsquatting-new-ai-vulnerability/preview.webp","featuredImageAbsoluteUrl":"http://localhost:3000/generated/blog/slopsquatting-new-ai-vulnerability/preview.webp","tags":["slopsquatting","ai-security","supply-chain","package-security","software-development","ai-hallucination","dependency-management","npm","pypi","vibe-coding","malware-prevention","cybersecurity"],"createdAt":"02-01-2025"}]}`;
+const blogIndexRaw = `TEMPLATE_STRING_BLOGINDEX`;
 
 const blogIndexData: BlogIndex = JSON.parse(blogIndexRaw);
 
