@@ -8,14 +8,13 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
-
 <style lang="scss" module>
 .layout {
   width: 100%;
 
   .content {
     width: 100%;
+    min-height: 100vh;
   }
 }
 </style>
