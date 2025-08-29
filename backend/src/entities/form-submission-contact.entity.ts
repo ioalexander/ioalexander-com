@@ -7,7 +7,7 @@ import {
 } from "typeorm";
 
 @Entity({ name: "form_submission_contact" })
-export class FormSubmissionContact {
+export class FormSubmissionContactEntity {
   @PrimaryGeneratedColumn({ name: "id" })
   id: number;
 

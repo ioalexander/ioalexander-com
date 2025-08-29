@@ -1,16 +1,13 @@
 import { DataSource, type DataSourceOptions } from "typeorm";
 
 import "dotenv/config";
+import { FormSubmissionContactEntity } from "../src/entities/form-submission-contact.entity";
 
 export const dataSourceOptions: DataSourceOptions = {
   type: "sqlite",
   database: "db_data/data.db",
   synchronize: false,
-  entities: [
-    process.env.NODE_ENV === "test" //
-      ? "src/entities/*.entity.ts"
-      : "dist/src/entities/*.entity.js",
-  ],
+  entities: [FormSubmissionContactEntity],
   migrations: ["src/migrations/*.js"],
 };
 

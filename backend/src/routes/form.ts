@@ -4,8 +4,8 @@ import dataSource from "../../db/dataSource";
 import { z } from "zod";
 import * as geoip from "geoip-lite";
 import { validateTurnstile } from "../shared/cloudflare/turnstile";
-import { validateBody } from "src/shared/zod/validate";
-import { sendTelegramNotification } from "src/shared/telegram/notification";
+import { validateBody } from "../shared/zod/validate";
+import { sendTelegramNotification } from "../shared/telegram/notification";
 
 const formSubmitContactSchema = z.object({
   firstName: z

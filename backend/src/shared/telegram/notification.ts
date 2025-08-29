@@ -16,13 +16,19 @@ export const sendTelegramNotification = (message: string) => {
       return;
     }
 
-    axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
-      chat_id: chatId,
-      text: message,
-      parse_mode: "Markdown",
-    });
+    const safeMessage = message.replace(/([_\\[\]()~>#+\-=|{}.!])/g, "\\$1");
+
+    axios
+      .post(`https://api.telegram.org/bot${token}/sendMessage`, {
+        chat_id: chatId,
+        text: safeMessage,
+        parse_mode: "MarkdownV2",
+      })
+      .catch((e) =>
+        console.error("Failed to send telegram notification", e?.message),
+      );
   } catch (e) {
-    console.error("Failed to send telegram notification", e);
+    console.error("Failed to send telegram notification", e?.message);
     return;
   }
 };
