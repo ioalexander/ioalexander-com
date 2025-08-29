@@ -1,11 +1,15 @@
 :root {
-  --color-primary: #1a73e8;
-  --color-secondary: #fbbc05;
+  --color-primary: #000;
+  --color-secondary: #fff;
+  --color-accent: #1a73e8;
 
   --text-primary: #d3d3d3;
-  --text-secondary: #ffffff;
-  --text-accent: var(--color-primary);
-  --background: #000;
+  --text-secondary: var(--color-secondary);
+  --text-accent: var(--color-accent);
+  --background: var(--color-primary);
+  --background-transparent: rgba(0, 0, 0, 0.6);
+  --background-blur: blur(10px);
+  --background-border: #9c9c9c33;
 
   --max-content-width: 1300px;
 }

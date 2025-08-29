@@ -4,18 +4,10 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-const props = defineProps({
-  noPadding: {
-    type: Boolean,
-    default: false,
-  },
-});
-</script>
-
 <style lang="scss" module>
 .panel {
-  background: var(--background);
-  filter: var(--shadow);
+  background: var(--background-transparent);
+  backdrop-filter: var(--background-blur);
+  border: 1px solid var(--background-border);
 }
 </style>

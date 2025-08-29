@@ -5,33 +5,24 @@
         <div :class="$style.left">
           <h1 :class="$style.title">
             Simple. Fast. <br />
-            Built to Last.
+            Built to&nbsp;Last.
           </h1>
           <p :class="$style.subtext">
             IOAlexander – I build fast, reliable, and scalable solutions for
-            real-world impact
+            real-world impact. I help businesses ship reliable, scalable
+            software faster:
           </p>
           <div :class="$style.description">
-            I help businesses ship reliable, scalable software faster:
             <ul>
-              <li>
-                High-performance backends that <b>grow with your business</b>
-              </li>
-              <li>
-                Frontends engineered for speed, clarity, and <b>user impact</b>
-              </li>
-              <li>
-                Solutions that <b>save</b> time, reduce errors, and deliver
-                better experiences
-              </li>
-              <li>
-                <b>Reliable</b> cloud infrastructure and DevOps pipelines for
-                smooth deployment
-              </li>
+              <li>High-performance backends that <b>grow with you</b></li>
+              <li>Frontends engineered for <b>speed and clarity</b></li>
+              <li>Solutions that <b>save time</b> and reduce errors</li>
+              <li><b>Reliable</b> cloud infrastructure and DevOps</li>
             </ul>
           </div>
         </div>
         <div :class="$style.right">
+          <div :class="$style.circle" />
           <SvgHeroDiagram :class="$style.diagram" />
         </div>
       </LandingSplit6040>
@@ -61,7 +52,7 @@
 
     ul {
       margin-left: 20px;
-      margin-top: 10px;
+      margin-top: 20px;
 
       li {
         margin-bottom: 10px;
@@ -76,6 +67,18 @@
 .hero .right {
   width: 100%;
   position: relative;
+
+  .circle {
+    width: 800px;
+    height: 800px;
+    position: absolute;
+    right: 200px;
+    top: 200px;
+    transform: translate(100%, -100%);
+    background: var(--color-accent);
+    border-radius: 100%;
+    filter: blur(100px);
+  }
 
   .diagram {
     position: absolute;

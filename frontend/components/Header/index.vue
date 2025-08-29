@@ -6,6 +6,17 @@
           <NuxtLink to="/" :class="$style.logo">
             <SvgLogo :class="$style.svg" />
           </NuxtLink>
+          <div />
+          <nav :class="$style.nav">
+            <ul :class="$style.list">
+              <li :class="$style.item">
+                <NuxtLink :class="$style.link" to="/blog">Blog</NuxtLink>
+              </li>
+              <li :class="$style.item">
+                <NuxtLink :class="$style.link" to="/find-me">Find me</NuxtLink>
+              </li>
+            </ul>
+          </nav>
         </div>
       </ControlsPanel>
     </header>
@@ -26,6 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 
     .panel {
       width: 100%;
@@ -41,8 +53,30 @@
         width: 100%;
 
         display: grid;
-        grid-template-columns: 200px 1fr 80px;
+        grid-template-columns: 200px 1fr 200px;
         align-items: center;
+
+        .nav {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+
+            .item {
+              .link {
+                padding: 10px;
+                text-decoration: none;
+              }
+            }
+          }
+        }
 
         .logo {
           width: 100%;
