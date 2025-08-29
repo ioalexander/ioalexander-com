@@ -76,7 +76,6 @@
 </template>
 
 <script setup lang="ts">
-import { useToast } from "vue-toastification";
 import { emailRegex } from "~/shared/regex";
 
 const state = reactive({
@@ -101,7 +100,6 @@ const state = reactive({
 });
 
 const api = useApi();
-const toast = useToast();
 
 const onSubmit = async () => {
   if (state.isSubmittingForm) {
@@ -150,7 +148,6 @@ const onSubmit = async () => {
   try {
     await api.form.submitContactForm(state.form);
 
-    toast.success("Successfuly submited form!");
     state.isFormSubmitted = true;
   } catch (e: unknown) {
     console.error("Failed to submit form:", e);
@@ -158,7 +155,6 @@ const onSubmit = async () => {
     if (e instanceof Error) {
       message = e.message;
     }
-    toast.error(`Failed to submit form. Error: ${message}`);
   } finally {
     state.isSubmittingForm = false;
   }
