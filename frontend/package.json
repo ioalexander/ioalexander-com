@@ -8,13 +8,17 @@
     "generate:blog": "ts-node generation/generate-blog.ts",
     "generate:nuxt": "nuxt generate",
     "generate": "yarn generate:blog && yarn generate:nuxt",
+    "serve": "npx http-server \"$PWD/.output/public\" -p 3000",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxt/eslint": "1.9.0",
+    "@nuxtjs/mdc": "0.17.2",
+    "@nuxtjs/sitemap": "7.4.3",
     "eslint": "^9.0.0",
     "nuxt": "^4.0.3",
+    "sharp": "^0.34.3",
     "vue": "^3.5.20",
     "vue-router": "^4.5.1"
   },
