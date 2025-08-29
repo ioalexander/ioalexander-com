@@ -15,18 +15,20 @@
   "dependencies": {
     "@nuxt/eslint": "1.9.0",
     "@nuxt/scripts": "^0.11.0",
-    "@nuxtjs/mdc": "0.17.2",
     "@nuxtjs/sitemap": "7.4.3",
     "@nuxtjs/turnstile": "1.0.0",
     "axios": "^1.11.0",
     "eslint": "^9.0.0",
+    "markdown-it": "^14.1.0",
     "nuxt": "^4.0.3",
     "sharp": "^0.34.3",
     "vue": "^3.5.20",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
     "nodemon": "^3.1.10",
+    "rollup-plugin-visualizer": "^6.0.3",
     "sass": "^1.91.0"
   }
 }

@@ -4,19 +4,32 @@
       <img :src="featuredImage" :class="$style.img" />
     </div>
     <h1 :class="$style.title">{{ title }}</h1>
-    <MDC :class="$style.content" :value="content" tag="div" />
+    <div :class="$style.content" v-html="content" />
   </article>
 </template>
 
 <script setup lang="ts">
+import MarkdownIt from "markdown-it";
+
 definePageMeta({
   layout: "blog",
 });
 
 const slug = `TEMPLATE_STRING_SLUG`;
 const title = `TEMPLATE_STRING_TITLE`;
-const content = `TEMPLATE_STRING_CONTENT`;
 const featuredImage = `TEMPLATE_STRING_FEATUREDIMAGE`;
+
+// Markdown content as a string
+const rawContent = `TEMPLATE_STRING_CONTENT`;
+
+// Parse Markdown to HTML at build time
+const md = new MarkdownIt({
+  html: true, // allow HTML in Markdown
+  linkify: true, // convert URLs to links
+  typographer: true, // smart quotes, etc.
+});
+
+const content = md.render(rawContent);
 </script>
 
 <style lang="scss" module>

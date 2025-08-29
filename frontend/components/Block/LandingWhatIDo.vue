@@ -17,7 +17,8 @@
             </ClientOnly>
             <noscript>
               <p>
-                No JavaScript enabled :(
+                No JavaScript enabled :( <br />
+                Please enable JavaScript for a better experience <br />
                 <NuxtLink to="#skipjsanchor">Click here to skip</NuxtLink>
               </p>
             </noscript>
