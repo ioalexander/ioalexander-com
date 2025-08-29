@@ -2,6 +2,7 @@
   <div>
     <BlockLandingHero />
     <BlockLandingWhatIDo />
+    <BlockLandingCallToAction />
   </div>
 </template>
 
