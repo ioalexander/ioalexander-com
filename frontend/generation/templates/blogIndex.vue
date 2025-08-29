@@ -66,6 +66,14 @@ const state = reactive<{ error: string | null; blogIndex: BlogIndex | null }>({
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
 
+    @media all and (max-width: 900px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media all and (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+
     .item {
       .panel {
         width: 100%;

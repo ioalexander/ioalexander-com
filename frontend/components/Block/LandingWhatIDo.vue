@@ -170,12 +170,34 @@ onMounted(() => {
   }
 
   .left {
+    height: auto;
+    @media all and (max-width: 800px) {
+      height: 200px;
+    }
+    .sticky {
+      @media all and (max-width: 800px) {
+        height: 100%;
+        top: 0;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
     .faceImage {
+      object-fit: contain;
       width: 100%;
       max-width: 400px;
       border-radius: 50%;
       overflow: hidden;
       top: 300px;
+
+      @media all and (max-width: 800px) {
+        top: 0;
+        width: auto;
+        height: 100%;
+        margin: 0 auto;
+      }
     }
   }
 

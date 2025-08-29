@@ -9,5 +9,9 @@
   display: grid;
   grid-template-columns: 40% 60%;
   grid-gap: 20px;
+
+  @media all and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

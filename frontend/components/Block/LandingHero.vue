@@ -44,11 +44,24 @@
     font-size: 60px;
     margin-bottom: 10px;
     color: var(--text-secondary);
+
+    @media all and (max-width: 800px) {
+      text-align: center;
+    }
+
+    @media all and (max-width: 500px) {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
   }
 
   .subtext {
     font-size: 20px;
     margin-bottom: 20px;
+
+    @media all and (max-width: 800px) {
+      text-align: center;
+    }
   }
 
   .description {
@@ -82,6 +95,14 @@
     background: var(--color-accent);
     border-radius: 100%;
     filter: blur(100px);
+
+    @media all and (max-width: 800px) {
+      top: -400px;
+    }
+
+    @media all and (max-width: 500px) {
+      top: -600px;
+    }
   }
 
   .diagram {
@@ -98,6 +119,22 @@
 
     @media all and (max-width: 1500px) {
       width: 100%;
+    }
+
+    @media all and (max-width: 800px) {
+      top: -500px;
+      left: unset;
+      right: -50px;
+      width: 300px;
+    }
+
+    @media all and (max-width: 700px) {
+      top: unset;
+      left: unset;
+      right: unset;
+      width: 100%;
+      margin-top: 100px;
+      position: relative;
     }
 
     > * > *:nth-child(1) > *:nth-child(1),
