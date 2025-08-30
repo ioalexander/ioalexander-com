@@ -26,7 +26,8 @@ if (!fs.existsSync(pagesBlogDir)) {
   throw new Error("pagesDir does not exist");
 }
 
-const possibleExts = [".png", ".jpg", ".jpeg", ".gif"];
+const possiblePreviewExts = [".png", ".jpg", ".jpeg", ".gif", ".webp"];
+const possibleMediaExts = [".png", ".jpg", ".webp", ".jpeg", ".gif"];
 
 type IndexData = {
   postsCount: number;
@@ -37,6 +38,7 @@ function readManifest(manifestPath: string): BlogPostItemManifest {
   return JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
 }
 
+// --- EXTRACT MARKDOWN WITHOUT ANY ESCAPING ---
 function extractMarkdownData(
   filePath: string,
   slug: string,
@@ -44,22 +46,19 @@ function extractMarkdownData(
   const raw = fs.readFileSync(filePath, "utf-8");
   const lines = raw.split("\n");
   const title = lines[0]?.replace(/^# /, "").trim() || "Untitled";
-  let content = lines.slice(1).join("\n").replace(/`/g, "\\`");
+  const content = lines.slice(1).join("\n");
 
-  // rewrite relative media paths
-  content = content.replaceAll(
-    /\]\(\.\/media\/(.*?)(\.png|\.jpg|\.jpeg|\.gif)/g,
-    `](/generated/blog/${slug}/media/$1.webp`,
-  );
+  // encode in Base64
+  const contentBase64 = Buffer.from(content, "utf-8").toString("base64");
 
-  return { title, content };
+  return { title, content: contentBase64 };
 }
 
 async function processPreviewImage(
   articlePath: string,
   slug: string,
 ): Promise<string> {
-  for (const ext of possibleExts) {
+  for (const ext of possiblePreviewExts) {
     const previewPath = path.join(articlePath, `preview${ext}`);
     if (fs.existsSync(previewPath)) {
       const outDir = path.join(publicBlogDir, slug);
@@ -94,9 +93,9 @@ async function copyAndConvertMediaFolder(articlePath: string, slug: string) {
 
     const destPath = path.join(mediaDest, `${baseName}.webp`);
 
-    if ([".png", ".jpg", ".jpeg", ".gif"].includes(ext)) {
+    if (possibleMediaExts.includes(ext)) {
       await sharp(srcPath)
-        .resize({ width: 2000, height: 2000, fit: "inside" }) // adjust limits if needed
+        .resize({ width: 2000, height: 2000, fit: "inside" })
         .toFormat("webp")
         .webp({ quality: 90, effort: 6 })
         .toFile(destPath);
@@ -110,18 +109,20 @@ async function copyAndConvertMediaFolder(articlePath: string, slug: string) {
   }
 }
 
+// --- CREATE VUE PAGE WITH BASE64 MARKDOWN ---
 function createVuePage(
   template: string,
   slug: string,
   title: string,
-  content: string,
+  contentBase64: string,
   featuredImageUrl: string,
 ): void {
+  // inject as JSON string literals
   const vueContent = template
-    .replaceAll("TEMPLATE_STRING_CONTENT", content)
+    .replaceAll("TEMPLATE_STRING_CONTENT", contentBase64)
     .replaceAll("TEMPLATE_STRING_TITLE", title)
     .replaceAll("TEMPLATE_STRING_SLUG", slug)
-    .replaceAll("TEMPLATE_STRING_FEATUREDIMAGE", featuredImageUrl);
+    .replaceAll("TEMPLATE_STRING_FEATUREDIMAGE", featuredImageUrl || "");
 
   const vuePath = path.join(pagesBlogDir, `${slug.replace(".md", "")}.vue`);
   fs.writeFileSync(vuePath, vueContent, "utf-8");

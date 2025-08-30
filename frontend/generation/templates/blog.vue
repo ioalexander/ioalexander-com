@@ -29,7 +29,15 @@ const md = new MarkdownIt({
   typographer: true, // smart quotes, etc.
 });
 
-const content = md.render(rawContent);
+const decodedContent = decodeURIComponent(
+  Array.prototype.map
+    .call(
+      atob(rawContent),
+      (c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2),
+    )
+    .join(""),
+);
+const content = md.render(decodedContent);
 </script>
 
 <style lang="scss" module>
@@ -82,6 +90,14 @@ const content = md.render(rawContent);
 
     hr {
       margin: 32px 0;
+    }
+
+    pre {
+      overflow: scroll;
+      padding: 16px;
+      border: 1px solid var(--background-border);
+      margin-bottom: 16px;
+      border-radius: 16px;
     }
 
     h1,
