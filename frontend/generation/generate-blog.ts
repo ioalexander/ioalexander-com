@@ -48,8 +48,8 @@ function extractMarkdownData(
 
   // rewrite relative media paths
   content = content.replaceAll(
-    /\]\(\.\/media\//g,
-    `](/generated/blog/${slug}/media/`,
+    /\]\(\.\/media\/(.*?)(\.png|\.jpg|\.jpeg|\.gif)/g,
+    `](/generated/blog/${slug}/media/$1.webp`,
   );
 
   return { title, content };
@@ -79,12 +79,34 @@ async function processPreviewImage(
   return "";
 }
 
-function copyMediaFolder(articlePath: string, slug: string) {
+async function copyAndConvertMediaFolder(articlePath: string, slug: string) {
   const mediaSrc = path.join(articlePath, "media");
-  if (fs.existsSync(mediaSrc)) {
-    const mediaDest = path.join(publicBlogDir, slug, "media");
-    fsExtra.copySync(mediaSrc, mediaDest, { overwrite: true });
-    console.log(`Copied media folder to ${mediaDest}`);
+  if (!fs.existsSync(mediaSrc)) return;
+
+  const mediaDest = path.join(publicBlogDir, slug, "media");
+  fsExtra.ensureDirSync(mediaDest);
+
+  const files = fs.readdirSync(mediaSrc);
+  for (const file of files) {
+    const srcPath = path.join(mediaSrc, file);
+    const ext = path.extname(file).toLowerCase();
+    const baseName = path.basename(file, ext);
+
+    const destPath = path.join(mediaDest, `${baseName}.webp`);
+
+    if ([".png", ".jpg", ".jpeg", ".gif"].includes(ext)) {
+      await sharp(srcPath)
+        .resize({ width: 2000, height: 2000, fit: "inside" }) // adjust limits if needed
+        .toFormat("webp")
+        .webp({ quality: 90, effort: 6 })
+        .toFile(destPath);
+      console.log(`Converted ${file} → ${destPath}`);
+    } else {
+      fsExtra.copySync(srcPath, path.join(mediaDest, file), {
+        overwrite: true,
+      });
+      console.log(`Copied ${file} → ${mediaDest}`);
+    }
   }
 }
 
@@ -156,7 +178,7 @@ async function generateBlog() {
     const { title, content } = extractMarkdownData(articleMarkdownPath, slug);
     const featuredImageUrl = await processPreviewImage(articlePath, slug);
 
-    copyMediaFolder(articlePath, slug);
+    await copyAndConvertMediaFolder(articlePath, slug);
     createVuePage(blogTemplate, slug, title, content, featuredImageUrl);
     updateIndexData(indexData, slug, title, manifest, featuredImageUrl);
   }

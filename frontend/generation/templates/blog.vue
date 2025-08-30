@@ -39,6 +39,10 @@ const content = md.render(rawContent);
   padding: 0 32px;
   margin: 0 auto;
 
+  @media all and (max-width: 800px) {
+    padding: 0 16px;
+  }
+
   .featuredImage {
     width: 100%;
     margin-top: 20px;
@@ -58,17 +62,33 @@ const content = md.render(rawContent);
   .title {
     margin-bottom: 32px;
     font-size: 60px;
+
+    @media all and (max-width: 800px) {
+      font-size: 40px;
+    }
+
+    @media all and (max-width: 400px) {
+      font-size: 30px;
+    }
   }
 
   .content {
     width: 100%;
+
+    img {
+      max-width: 100%;
+    }
+
+    hr {
+      margin: 32px 0;
+    }
 
     h1,
     h2,
     h3,
     h4,
     h5 {
-      margin: 0 0 10px;
+      margin: 0 0 16px;
       color: var(--color-secondary);
 
       a {
@@ -94,7 +114,8 @@ const content = md.render(rawContent);
       margin-bottom: 10px;
     }
 
-    ul {
+    ul,
+    ol {
       margin-left: 20px;
       li {
         margin-bottom: 10px;
