@@ -3,6 +3,7 @@ import path from "path";
 import sharp from "sharp";
 import type { BlogPostItem } from "~/types/blogPostItem";
 import type { BlogPostItemManifest } from "~/types/blogPostItemManifest";
+import fsExtra from "fs-extra";
 
 const domain = process.env.NUXT_PUBLIC_DOMAIN || "http://localhost:3000";
 
@@ -51,7 +52,13 @@ async function generateBlog() {
     const raw = fs.readFileSync(articleMarkdownPath, "utf-8");
     const lines = raw.split("\n");
     const title = lines[0]?.replace(/^# /, "").trim() || "Untitled";
-    const content = lines.slice(1).join("\n").replace(/`/g, "\\`");
+    let content = lines.slice(1).join("\n").replace(/`/g, "\\`");
+
+    // 🔄 Rewrite ./media/... paths → /generated/blog/{slug}/media/...
+    content = content.replaceAll(
+      /\]\(\.\/media\//g,
+      `](/generated/blog/${slug}/media/`,
+    );
 
     // Detect preview image (any common extension)
     const possibleExts = [".png", ".jpg", ".jpeg", ".gif"];
@@ -74,6 +81,14 @@ async function generateBlog() {
         featuredImageUrl = `/generated/blog/${slug}/preview.webp`;
         break;
       }
+    }
+
+    // ✅ Copy media folder if it exists
+    const mediaSrc = path.join(articlePath, "media");
+    if (fs.existsSync(mediaSrc)) {
+      const mediaDest = path.join(publicBlogDir, slug, "media");
+      fsExtra.copySync(mediaSrc, mediaDest, { overwrite: true });
+      console.log(`Copied media folder to ${mediaDest}`);
     }
 
     const vueContent = blogTemplate
@@ -101,7 +116,6 @@ async function generateBlog() {
 
     console.log(`Generated ${vuePath}`);
   }
-
   console.log("Generating blog index...");
 
   const blogIndexVueContent = blogIndexTemplate.replaceAll(
