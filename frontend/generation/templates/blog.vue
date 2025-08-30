@@ -62,6 +62,7 @@ const content = md.render(rawContent);
   .title {
     margin-bottom: 32px;
     font-size: 60px;
+    color: var(--text-secondary);
 
     @media all and (max-width: 800px) {
       font-size: 40px;
@@ -89,7 +90,7 @@ const content = md.render(rawContent);
     h4,
     h5 {
       margin: 0 0 16px;
-      color: var(--color-secondary);
+      color: var(--text-secondary);
 
       a {
         color: inherit;
