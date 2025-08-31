@@ -20,10 +20,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Build & push backend
-        run: |
-          docker build -t forgejo.ioalexander.com/ioalexander/backend:latest ./backend
-          docker push forgejo.ioalexander.com/ioalexander/backend:latest
+      # - name: Build & push backend
+      #   run: |
+      #     docker build -t forgejo.ioalexander.com/ioalexander/backend:latest ./backend
+      #     docker push forgejo.ioalexander.com/ioalexander/backend:latest
 
       - name: Build & push frontend
         run: |
