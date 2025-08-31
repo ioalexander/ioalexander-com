@@ -10,6 +10,8 @@ jobs:
     container:
       image: docker:24-dind
       options: --privileged
+      env:
+        DOCKER_TLS_CERTDIR: ""
     steps:
       - name: Check Docker
         run: |
