@@ -26,12 +26,19 @@ jobs:
       #     docker push forgejo.ioalexander.com/ioalexander/backend:latest
 
       - name: Build & push frontend
+        env:
+          NUXT_PUBLIC_DOMAIN: ${{ vars.NUXT_PUBLIC_DOMAIN }}
+          NUXT_PUBLIC_TURNSTILE_KEY: ${{ vars.NUXT_PUBLIC_TURNSTILE_KEY }}
+          NUXT_PUBLIC_API_BASE: ${{ vars.NUXT_PUBLIC_API_BASE }}
         run: |
-          printenv
+          echo "Domain=$NUXT_PUBLIC_DOMAIN"
+          echo "Turnstile=$NUXT_PUBLIC_TURNSTILE_KEY"
+          echo "API=$NUXT_PUBLIC_API_BASE"
+
           docker build \
-            --build-arg NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN} \
-            --build-arg NUXT_PUBLIC_TURNSTILE_KEY=${NUXT_PUBLIC_TURNSTILE_KEY} \
-            --build-arg NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE} \
+            --build-arg NUXT_PUBLIC_DOMAIN=$NUXT_PUBLIC_DOMAIN \
+            --build-arg NUXT_PUBLIC_TURNSTILE_KEY=$NUXT_PUBLIC_TURNSTILE_KEY \
+            --build-arg NUXT_PUBLIC_API_BASE=$NUXT_PUBLIC_API_BASE \
             -t forgejo.ioalexander.com/ioalexander/frontend:latest ./frontend
           docker push forgejo.ioalexander.com/ioalexander/frontend:latest
 
