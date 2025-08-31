@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: forgejo.ioalexander.com/ioalexander/backend:latest
+          image: forgejo.ioalexander.com/ioalexander/ioalexander-com:latest
           ports:
             - containerPort: 4000
       imagePullSecrets:
@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: forgejo.ioalexander.com/ioalexander/frontend:latest
+          image: forgejo.ioalexander.com/ioalexander/ioalexander-com:latest
           ports:
             - containerPort: 80
       imagePullSecrets:
