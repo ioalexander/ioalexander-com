@@ -14,6 +14,8 @@ jobs:
       - name: Setup Node & Docker
         run: |
           apk add nodejs
+          apk add curl
+          apk add kubectl
           docker info
 
       - name: Checkout repository
@@ -33,13 +35,8 @@ jobs:
             -t forgejo.ioalexander.com/ioalexander/ioalexander-com:latest ./frontend
           docker --debug push forgejo.ioalexander.com/ioalexander/ioalexander-com:latest
 
-      - name: Setup kubectl
-        run: |
-          curl -LO https://dl.k8s.io/release/v1.27.0/bin/linux/amd64/kubectl
-          chmod +x kubectl && mv kubectl /usr/local/bin/
-
-      - name: Deploy to k8ss
+      - name: Set up Kubeconfig
         run: |
           echo "${{ secrets.KUBECONFIG }}" > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
-          kubectl apply -f k8s/
+          kubectl get nodes -o wide
