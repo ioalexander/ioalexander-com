@@ -32,7 +32,7 @@ jobs:
             --build-arg NUXT_PUBLIC_DOMAIN=$NUXT_PUBLIC_DOMAIN \
             --build-arg NUXT_PUBLIC_TURNSTILE_KEY=$NUXT_PUBLIC_TURNSTILE_KEY \
             --build-arg NUXT_PUBLIC_API_BASE=$NUXT_PUBLIC_API_BASE \
-            -t forgejo.ioalexander.com/ioalexander/ioalexander-com:latest ./frontend
+            -t forgejo.ioalexander.com/ioalexander/ioalexander-com:frontend-latest ./frontend
           docker --debug push forgejo.ioalexander.com/ioalexander/ioalexander-com:frontend-latest
 
       - name: Build & push backend
