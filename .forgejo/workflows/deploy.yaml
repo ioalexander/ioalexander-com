@@ -8,15 +8,12 @@ jobs:
   build-deploy:
     runs-on: docker
     container:
-      image: node:22-bullseye-slim
+      image: docker:24-dind
       options: --privileged
-    services:
-      docker:
-        image: docker:24-dind
-        options: --privileged
     steps:
       - name: Check Docker
         run: |
+          apt-get update && apt-get install -y docker.io
           docker info
 
       - name: List all environment variables
