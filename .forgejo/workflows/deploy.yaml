@@ -19,8 +19,11 @@ jobs:
           docker info
 
       - name: Login to registry
+        env:
+          REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
         run: |
-          echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login forgejo.ioalexander.com -u ${{ secrets.REGISTRY_USER }} --password-stdin
+          echo "$REGISTRY_PASSWORD" | docker login forgejo.ioalexander.com -u "$REGISTRY_USER" --password-stdin
 
       - name: Build & push backend
         run: |
