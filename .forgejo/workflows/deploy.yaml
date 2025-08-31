@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Setup Node & Docker
         run: |
-          apt-get install -y nodejs
+          apk add nodejs
           docker info
           echo "${FORGEJO_TOKEN}" | docker login forgejo.ioalexander.com --username "${FORGEJO_ACTOR}" --password-stdin
 
