@@ -35,7 +35,7 @@ jobs:
             -t forgejo.ioalexander.com/ioalexander/ioalexander-com:latest ./frontend
           docker --debug push forgejo.ioalexander.com/ioalexander/ioalexander-com:latest
 
-      - name: Set up Kubeconfig
+      - name: Set up Kubeconfigg
         run: |
           echo "${{ secrets.KUBECONFIG }}" > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
