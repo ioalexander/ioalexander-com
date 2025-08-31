@@ -19,11 +19,14 @@ jobs:
           docker info
 
       - name: Login to registry
+        run: |
+          export DOCKER_HOST=tcp://127.0.0.1:2376
+          export DOCKER_TLS_VERIFY=1
+          export DOCKER_CERT_PATH=/certs/client
+          echo "${REGISTRY_PASSWORD}" | docker login -u "${REGISTRY_USER}" --password-stdin forgejo.ioalexander.com
         env:
           REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
-        run: |
-          echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin forgejo.ioalexander.com
 
       - name: Build & push backend
         run: |
