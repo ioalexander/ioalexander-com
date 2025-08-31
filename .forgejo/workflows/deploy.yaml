@@ -15,7 +15,6 @@ jobs:
         run: |
           apk add nodejs
           docker info
-          echo "${FORGEJO_TOKEN}" | docker login forgejo.ioalexander.com --username "${FORGEJO_ACTOR}" --password-stdin
 
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -26,6 +25,7 @@ jobs:
           NUXT_PUBLIC_TURNSTILE_KEY: ${{ vars.NUXT_PUBLIC_TURNSTILE_KEY }}
           NUXT_PUBLIC_API_BASE: ${{ vars.NUXT_PUBLIC_API_BASE }}
         run: |
+          echo "${FORGEJO_TOKEN}" | docker login forgejo.ioalexander.com --username "${FORGEJO_ACTOR}" --password-stdin
           docker build \
             --build-arg NUXT_PUBLIC_DOMAIN=$NUXT_PUBLIC_DOMAIN \
             --build-arg NUXT_PUBLIC_TURNSTILE_KEY=$NUXT_PUBLIC_TURNSTILE_KEY \
