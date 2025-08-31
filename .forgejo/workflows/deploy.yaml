@@ -39,4 +39,4 @@ jobs:
         run: |
           echo "${{ secrets.KUBECONFIG }}" > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
-          kubectl apply -f k8s.yaml
+          kubectl apply -f k8s.yaml -n ioalexander
