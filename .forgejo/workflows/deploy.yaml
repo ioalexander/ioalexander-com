@@ -38,7 +38,7 @@ jobs:
           curl -LO https://dl.k8s.io/release/v1.27.0/bin/linux/amd64/kubectl
           chmod +x kubectl && mv kubectl /usr/local/bin/
 
-      - name: Deploy to k8s
+      - name: Deploy to k8ss
         run: |
           echo "${{ secrets.KUBECONFIG }}" > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
