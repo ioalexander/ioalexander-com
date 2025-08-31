@@ -19,20 +19,15 @@ jobs:
           export DOCKER_CERT_PATH=/certs/client
           docker info
 
-      - name: Test echo credentials
-        env:
-          FORGEJO_USERNAME: ${{ secrets.FORGEJO_USERNAME }}
-          FORGEJO_PASSWORD: ${{ secrets.FORGEJOB_PASSWORD }}
-        run: |
-          echo "Username: $FORGEJO_USERNAME"
-          echo "Password: $FORGEJO_PASSWORD"
+      - name: List all environment variables
+        run: env
 
       - name: Login to Registry
         uses: docker/login-action@v3
         with:
           registry: forgejo.ioalexander.com
-          username: ${{ secrets.FORGEJO_USERNAME }}
-          password: ${{ secrets.FORGEJO_PASSWORD }}
+          username: ioalexander
+          password: ${{ secrets.CI_TOKEN }}
         env:
           REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
