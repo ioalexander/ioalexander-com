@@ -19,7 +19,8 @@ jobs:
           docker info
 
       - name: Login to registry
-        run: docker login forgejo.ioalexander.com -u "${REGISTRY_USER}" --password-stdin <<< "${REGISTRY_PASSWORD}"
+        run: |
+          echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin forgejo.ioalexander.com
         env:
           REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
