@@ -27,7 +27,11 @@ jobs:
 
       - name: Build & push frontend
         run: |
-          docker build -t forgejo.ioalexander.com/ioalexander/frontend:latest ./frontend
+          docker build \
+            --build-arg NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN} \
+            --build-arg NUXT_PUBLIC_TURNSTILE_KEY=${NUXT_PUBLIC_TURNSTILE_KEY} \
+            --build-arg NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE} \
+            -t forgejo.ioalexander.com/ioalexander/frontend:latest ./frontend
           docker push forgejo.ioalexander.com/ioalexander/frontend:latest
 
       - name: Setup kubectl
