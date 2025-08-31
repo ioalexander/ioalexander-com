@@ -8,7 +8,7 @@ jobs:
   build-deploy:
     runs-on: docker
     container:
-      image: node:22-bullseye-slim
+      image: docker:24-dind
       options: --privileged
     steps:
       - name: Check Docker
