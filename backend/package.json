@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "migrate:up": "typeorm-ts-node-commonjs migration:run -d db/dataSource.ts",
     "migrate:down": "typeorm-ts-node-commonjs migration:revert -d db/dataSource.ts",
     "test": "clear && LOG_LEVEL=silent jest --config ./test/jest-e2e.json"

@@ -33,10 +33,33 @@ jobs:
             --build-arg NUXT_PUBLIC_TURNSTILE_KEY=$NUXT_PUBLIC_TURNSTILE_KEY \
             --build-arg NUXT_PUBLIC_API_BASE=$NUXT_PUBLIC_API_BASE \
             -t forgejo.ioalexander.com/ioalexander/ioalexander-com:latest ./frontend
-          docker --debug push forgejo.ioalexander.com/ioalexander/ioalexander-com:latest
+          docker --debug push forgejo.ioalexander.com/ioalexander/ioalexander-com:frontend-latest
+
+      - name: Build & push backend
+        env:
+          BACKEND_PORT: ${{ vars.BACKEND_PORT }}
+          BACKEND_APP_DOMAIN: ${{ vars.BACKEND_APP_DOMAIN }}
+          BACKEND_TURNSTILE_SECRET_KEY: ${{ secrets.BACKEND_TURNSTILE_SECRET_KEY }}
+          BACKEND_TELEGRAM_NOTIFICATIONS_BOT_TOKEN: ${{ secrets.BACKEND_TELEGRAM_NOTIFICATIONS_BOT_TOKEN }}
+          BACKEND_TELEGRAM_NOTIFICATIONS_CHAT_ID: ${{ secrets.BACKEND_TELEGRAM_NOTIFICATIONS_CHAT_ID }}
+        run: |
+          echo "${{ secrets.FORGEJO_TOKEN }}" | docker login forgejo.ioalexander.com --username "${FORGEJO_ACTOR}" --password-stdin
+          docker build \
+            --build-arg BACKEND_NODE_ENV=$BACKEND_NODE_ENV \
+            --build-arg BACKEND_PORT=$BACKEND_PORT \
+            --build-arg BACKEND_APP_DOMAIN=$BACKEND_APP_DOMAIN \
+            --build-arg BACKEND_TURNSTILE_SECRET_KEY=$BACKEND_TURNSTILE_SECRET_KEY \
+            --build-arg BACKEND_TELEGRAM_NOTIFICATIONS_BOT_TOKEN=$BACKEND_TELEGRAM_NOTIFICATIONS_BOT_TOKEN \
+            --build-arg BACKEND_TELEGRAM_NOTIFICATIONS_CHAT_ID=$BACKEND_TELEGRAM_NOTIFICATIONS_CHAT_ID \
+            -t forgejo.ioalexander.com/ioalexander/ioalexander:backend-latest ./backend
+          docker --debug push forgejo.ioalexander.com/ioalexander/ioalexander:backend-latest
 
       - name: Deploy to Kubernetes
         run: |
           echo "${{ secrets.KUBECONFIG }}" > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
           kubectl apply -f k8s.yaml -n ioalexander
+      - name: Force rollout restart
+        run: |
+          kubectl rollout restart deployment backend -n ioalexander
+          kubectl rollout restart deployment frontend -n ioalexander
