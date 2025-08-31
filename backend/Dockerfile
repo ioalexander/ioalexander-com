@@ -8,7 +8,8 @@ RUN apk add --no-cache sqlite python3
 
 COPY package.json yarn.lock ./
 RUN yarn global add ts-node typescript
-RUN yarn install --frozen-lock-file
+RUN yarn install --frozen-lock-file --production
+
 COPY . .
 
 # Build the project
