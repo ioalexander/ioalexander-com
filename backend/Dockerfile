@@ -4,7 +4,7 @@
 FROM node:22-alpine AS builder
 WORKDIR /app
 
-RUN apk add sqlite3
+RUN apk add sqlite
 
 COPY package.json yarn.lock ./
 RUN yarn global add ts-node typescript
