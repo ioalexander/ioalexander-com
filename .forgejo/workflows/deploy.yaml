@@ -17,7 +17,6 @@ jobs:
     steps:
       - name: Check Docker
         run: |
-          apt-get update && apt-get install -y docker.io
           docker info
 
       - name: List all environment variables
