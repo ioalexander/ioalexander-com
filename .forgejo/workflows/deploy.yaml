@@ -11,15 +11,10 @@ jobs:
       image: docker:24-dind
       options: --privileged
     steps:
-      - name: Check Docker
+      - name: Setup Node & Docker
         run: |
+          apt-get install -y nodejs
           docker info
-
-      - name: List all environment variables
-        run: env
-
-      - name: Login to Registry
-        run: |
           echo "${FORGEJO_TOKEN}" | docker login forgejo.ioalexander.com --username "${FORGEJO_ACTOR}" --password-stdin
 
       - name: Checkout repository
