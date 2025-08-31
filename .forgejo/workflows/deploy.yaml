@@ -7,8 +7,18 @@ on:
 jobs:
   build-deploy:
     runs-on: docker
+    container:
+      image: docker:24.0.5
+      options: --privileged
     steps:
       - uses: actions/checkout@v3
+
+      - name: Check Docker
+        run: |
+          export DOCKER_HOST=tcp://127.0.0.1:2376
+          export DOCKER_TLS_VERIFY=1
+          export DOCKER_CERT_PATH=/certs/client
+          docker info
 
       - name: Login to registry
         run: |
