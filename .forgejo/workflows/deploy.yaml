@@ -11,7 +11,7 @@ jobs:
       image: docker:24.0.5
       options: --privileged
     env:
-      DOCKER_HOST: tcp://docker:2376
+      DOCKER_HOST: tcp://127.0.0.1:2376
       DOCKER_TLS_VERIFY: 1
       DOCKER_CERT_PATH: /certs/client
     steps:
