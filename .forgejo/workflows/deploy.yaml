@@ -14,7 +14,7 @@ jobs:
       - name: Check Docker
         run: |
           apt-get update && apt-get install -y docker.io
-          export DOCKER_HOST=tcp://127.0.0.1:2376
+          #export DOCKER_HOST=tcp://127.0.0.1:2376
           docker info
 
       - name: List all environment variables
