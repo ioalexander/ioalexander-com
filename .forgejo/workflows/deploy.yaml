@@ -31,7 +31,7 @@ jobs:
             --build-arg NUXT_PUBLIC_TURNSTILE_KEY=$NUXT_PUBLIC_TURNSTILE_KEY \
             --build-arg NUXT_PUBLIC_API_BASE=$NUXT_PUBLIC_API_BASE \
             -t forgejo.ioalexander.com/ioalexander/ioalexander-com:latest ./frontend
-          docker push forgejo.ioalexander.com/ioalexander/ioalexander-com:latest
+          docker --debug push forgejo.ioalexander.com/ioalexander/ioalexander-com:latest
 
       - name: Setup kubectl
         run: |
