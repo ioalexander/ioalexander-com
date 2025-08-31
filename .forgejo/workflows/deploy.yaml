@@ -13,12 +13,15 @@ jobs:
     steps:
       - name: Check Docker
         run: |
+          export DOCKER_HOST=tcp://127.0.0.1:2376
+          export DOCKER_TLS_VERIFY=1
+          export DOCKER_CERT_PATH=/certs/client
           docker info
 
       - name: Login to Registry
         uses: docker/login-action@v3
         with:
-          registry: forgejo.MYFORGEJO.com
+          registry: forgejo.ioalexander.com
           username: ${{ secrets.FORGEJO_USERNAME }}
           password: ${{ secrets.FORGEJO_PASSWORD }}
         env:
