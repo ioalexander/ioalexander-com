@@ -23,7 +23,7 @@ jobs:
           REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
         run: |
-          echo "$REGISTRY_PASSWORD" | docker login forgejo.ioalexander.com -u "$REGISTRY_USER" --password-stdin
+          echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin forgejo.ioalexander.com
 
       - name: Build & push backend
         run: |
