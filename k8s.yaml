@@ -23,9 +23,8 @@ spec:
           image: forgejo.ioalexander.com/ioalexander/backend:latest
           ports:
             - containerPort: 4000
-          imagePullSecrets:
-            - name: forgejo-registry-secret
-
+      imagePullSecrets:
+        - name: forgejo-registry-secret
 ---
 apiVersion: v1
 kind: Service
