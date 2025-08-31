@@ -54,6 +54,29 @@ spec:
           image: forgejo.ioalexander.com/ioalexander/ioalexander-com:frontend-latest
           ports:
             - containerPort: 80
+          env:
+            - name: PORT
+              value: "4000"
+            - name: APP_DOMAIN
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: APP_DOMAIN
+            - name: TURNSTILE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: TURNSTILE_SECRET_KEY
+            - name: TELEGRAM_NOTIFICATIONS_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: TELEGRAM_NOTIFICATIONS_BOT_TOKEN
+            - name: TELEGRAM_NOTIFICATIONS_CHAT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: TELEGRAM_NOTIFICATIONS_CHAT_ID
       imagePullSecrets:
         - name: forgejo-registry-secret
 ---
