@@ -1,6 +1,9 @@
 <template>
   <div>
-    <label v-if="!!props.label" :class="$style.label"
+    <label
+      v-if="!!props.label"
+      :class="$style.label"
+      :for="accesabilityUniqueId"
       >{{ props.label
       }}<span v-if="props.requiredAsterisk" :class="$style.asterisk"
         >*</span
@@ -24,6 +27,7 @@
       <div :class="$style.htmlInputContainer">
         <textarea
           ref="inputRef"
+          :id="accesabilityUniqueId"
           :name="props.name"
           :class="$style.htmlInput"
           :rows="props.rows"
@@ -40,6 +44,7 @@
 
 <script setup lang="ts">
 const inputRef = ref<HTMLTextAreaElement | null>(null);
+const accesabilityUniqueId = `input-${Math.random().toString(36).slice(2, 11)}`;
 
 const emit = defineEmits(["focus", "blur", "enter"]);
 

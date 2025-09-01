@@ -2,7 +2,7 @@
   <footer :class="$style.footer">
     <ControlsPanel :class="$style.panel">
       <div :class="$style.content">
-        <NuxtLink to="/" :class="$style.logo">
+        <NuxtLink to="/" :class="$style.logo" aria-label="IOAlexander Home">
           <SvgLogo :class="$style.svg" />
         </NuxtLink>
         <nav :class="$style.nav">
