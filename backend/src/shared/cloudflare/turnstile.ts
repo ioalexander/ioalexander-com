@@ -20,7 +20,7 @@ export const validateTurnstile = async (
     return true;
   }
 
-  const secretKey = process.env.TURNSTILE_SECRET_KEY;
+  const secretKey = envs.TURNSTILE_SECRET_KEY;
   if (!secretKey && envs.NODE_ENV !== "development") {
     request.log.error("TURNSTILE_SECRET_KEY not set in environment variables");
     reply.code(500).send({
@@ -30,14 +30,21 @@ export const validateTurnstile = async (
   }
 
   try {
-    const response = await axios.get(
+    const ip =
+      request.headers["cf-connecting-ip"] ||
+      request.headers["x-forwarded-for"] ||
+      request.ip;
+
+    const body = new URLSearchParams();
+    body.append("secret", secretKey);
+    body.append("response", token);
+    body.append("remoteip", ip?.toString());
+
+    const response = await axios.post(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      body,
       {
-        params: {
-          secret: secretKey,
-          response: token,
-          remoteip: request.ip,
-        },
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
       },
     );
 
