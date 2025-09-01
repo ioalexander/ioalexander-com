@@ -52,6 +52,16 @@ const state = reactive<{ error: string | null; blogIndex: BlogIndex | null }>({
     ),
   },
 });
+
+useHead({
+  title: "Blog",
+  meta: [
+    {
+      name: "description",
+      content: "Read all tech news and projects I do!",
+    },
+  ],
+});
 </script>
 
 <style lang="scss" module>

@@ -11,10 +11,6 @@
 <script setup lang="ts">
 import MarkdownIt from "markdown-it";
 
-definePageMeta({
-  layout: "blog",
-});
-
 const slug = `TEMPLATE_STRING_SLUG`;
 const title = `TEMPLATE_STRING_TITLE`;
 const featuredImage = `TEMPLATE_STRING_FEATUREDIMAGE`;
@@ -38,6 +34,23 @@ const decodedContent = decodeURIComponent(
     .join(""),
 );
 const content = md.render(decodedContent);
+
+const metaDescription = computed(() =>
+  decodedContent.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 160),
+);
+
+useHead({
+  title,
+  meta: [
+    {
+      name: "description",
+      content:
+        metaDescription + (metaDescription.value.length === 160 ? "..." : ""),
+    },
+    { property: "og:title", content: title },
+    { property: "og:image", content: featuredImage },
+  ],
+});
 </script>
 
 <style lang="scss" module>

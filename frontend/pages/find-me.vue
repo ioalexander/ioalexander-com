@@ -36,6 +36,19 @@
   </LandingSection>
 </template>
 
+<script setup>
+definePageMeta({
+  title: "Find me",
+  meta: [
+    {
+      name: "description",
+      content:
+        " Let’s build something fast and reliable together. Whether you need a high-performance backend, a sleek frontend, or automated cloud workflows, I’m ready to help you ship faster, reduce errors, and scale with confidence. Reach out and let’s make it happen. ",
+    },
+  ],
+});
+</script>
+
 <style lang="scss" module>
 .hero {
   position: relative;

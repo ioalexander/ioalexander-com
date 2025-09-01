@@ -3,7 +3,7 @@
     <header :class="$style.header">
       <ControlsPanel :class="$style.panel">
         <div :class="$style.content">
-          <NuxtLink to="/" :class="$style.logo">
+          <NuxtLink to="/" :class="$style.logo" aria-label="IOAlexander Home">
             <SvgLogo :class="$style.svg" />
           </NuxtLink>
           <div />

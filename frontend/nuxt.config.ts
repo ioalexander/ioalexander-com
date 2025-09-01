@@ -16,6 +16,21 @@ export default defineNuxtConfig({
   },
 
   site: { url: process.env.NUXT_PUBLIC_DOMAIN, name: "IOAlexander" },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "en",
+      },
+      title: "IOAlexander - Simple. Fast. Built to Last.",
+      meta: [
+        {
+          name: "description",
+          content:
+            "I build fast, reliable, and scalable solutions for real-world impact. I help businesses ship reliable, scalable software faster.",
+        },
+      ],
+    },
+  },
 
   turnstile: {
     siteKey: process.env.NUXT_PUBLIC_TURNSTILE_KEY as string,

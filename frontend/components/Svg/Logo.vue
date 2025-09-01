@@ -22,7 +22,6 @@
           fill: #fcfcfc;
           stroke-width: 0.264583;
         "
-        aria-label="IOAlexander"
       />
       <rect
         style="fill: #14dbff; fill-opacity: 1; stroke-width: 0.264583"
