@@ -45,8 +45,8 @@ jobs:
         run: |
           echo "${{ secrets.FORGEJO_TOKEN }}" | docker login forgejo.ioalexander.com --username "${FORGEJO_ACTOR}" --password-stdin
           docker build \
-            -t forgejo.ioalexander.com/ioalexander/ioalexander:backend-latest ./backend
-          docker --debug push forgejo.ioalexander.com/ioalexander/ioalexander:backend-latest
+            -t forgejo.ioalexander.com/ioalexander/ioalexander-com:backend-latest ./backend
+          docker --debug push forgejo.ioalexander.com/ioalexander/ioalexander-com:backend-latest
 
       - name: Deploy to Kubernetes
         run: |
