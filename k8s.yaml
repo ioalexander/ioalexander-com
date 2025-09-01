@@ -13,6 +13,20 @@ spec:
       labels:
         app: backend
     spec:
+      volumes:
+        - name: backend-db
+          persistentVolumeClaim:
+            claimName: backend-db-pvc
+      initContainers:
+        - name: migrate
+          image: forgejo.ioalexander.com/ioalexander/ioalexander-com:backend-latest
+          command: ["yarn", "migrate:up"]
+          env:
+            - name: PORT
+              value: "4000"
+          volumeMounts:
+            - name: backend-db
+              mountPath: /app/db_data
       containers:
         - name: backend
           image: forgejo.ioalexander.com/ioalexander/ioalexander-com:backend-latest
@@ -41,6 +55,9 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: TELEGRAM_NOTIFICATIONS_CHAT_ID
+          volumeMounts:
+            - name: backend-db
+              mountPath: /app/db_data
           readinessProbe:
             httpGet:
               path: /api/health
@@ -55,6 +72,18 @@ spec:
             periodSeconds: 20
       imagePullSecrets:
         - name: forgejo-registry-secret
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backend-db-pvc
+  namespace: ioalexander
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: Service

@@ -26,6 +26,8 @@ WORKDIR /app
 # Copy build artifacts and node_modules from builder
 COPY --from=builder /app /app
 
+RUN mkdir -p /app/db_data
+
 # Reinstall only production dependencies to reduce image size
 RUN yarn install --frozen-lockfile --production && yarn cache clean
 
