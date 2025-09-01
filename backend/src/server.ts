@@ -11,7 +11,7 @@ dataSource.initialize().then(() => {
   app.register(healthRoutes, { prefix });
   app.register(formRoutes, { prefix });
 
-  app.listen({ port: 4000 }, () =>
+  app.listen({ port: 4000, host: "0.0.0.0" }, () =>
     console.log("Server running on http://localhost:4000"),
   );
 });
