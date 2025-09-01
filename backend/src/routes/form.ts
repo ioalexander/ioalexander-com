@@ -6,6 +6,7 @@ import * as geoip from "geoip-lite";
 import { validateTurnstile } from "../shared/cloudflare/turnstile";
 import { validateBody } from "../shared/zod/validate";
 import { sendTelegramNotification } from "../shared/telegram/notification";
+import { getIp } from "../shared/fastify/getIp";
 
 const formSubmitContactSchema = z.object({
   firstName: z
@@ -51,7 +52,8 @@ export async function formRoutes(fastify: FastifyInstance) {
       try {
         const userAgent = request.headers["user-agent"] || "";
 
-        const geo = geoip.lookup(request.ip);
+        const ip = getIp(request);
+        const geo = geoip.lookup(ip);
 
         const submission = await repository.create({
           answerFirstName: body.firstName,

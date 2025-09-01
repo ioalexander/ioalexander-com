@@ -1,6 +1,7 @@
 import axios from "axios";
 import { envs } from "../envs";
 import { FastifyReply, FastifyRequest } from "fastify";
+import { getIp } from "../fastify/getIp";
 
 export const validateTurnstile = async (
   request: FastifyRequest,
@@ -30,10 +31,7 @@ export const validateTurnstile = async (
   }
 
   try {
-    const ip =
-      request.headers["cf-connecting-ip"] ||
-      request.headers["x-forwarded-for"] ||
-      request.ip;
+    const ip = getIp(request);
 
     const body = new URLSearchParams();
     body.append("secret", secretKey);
