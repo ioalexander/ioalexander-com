@@ -11,6 +11,8 @@
 <script setup lang="ts">
 import MarkdownIt from "markdown-it";
 
+definePageMeta({ client: false });
+
 const slug = `TEMPLATE_STRING_SLUG`;
 const title = `TEMPLATE_STRING_TITLE`;
 const featuredImage = `TEMPLATE_STRING_FEATUREDIMAGE`;

@@ -30,7 +30,18 @@
       <LandingCenter>
         <div :class="$style.circle" />
         <h2 :class="$style.title">Contact form:</h2>
-        <LandingContactForm />
+        <ClientOnly>
+          <template #fallback>
+            <p>
+              <br />
+              Without JavaScript, Contact form will not work.
+              <br />
+              Please enable JavaScript
+              <br />
+            </p>
+          </template>
+          <LandingContactForm />
+        </ClientOnly>
       </LandingCenter>
     </LandingMaxWidth>
   </LandingSection>
@@ -46,6 +57,7 @@ definePageMeta({
         " Let’s build something fast and reliable together. Whether you need a high-performance backend, a sleek frontend, or automated cloud workflows, I’m ready to help you ship faster, reduce errors, and scale with confidence. Reach out and let’s make it happen. ",
     },
   ],
+  client: false,
 });
 </script>
 

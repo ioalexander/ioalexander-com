@@ -36,6 +36,16 @@ export default defineNuxtConfig({
     siteKey: process.env.NUXT_PUBLIC_TURNSTILE_KEY as string,
   },
 
+  features: {
+    inlineStyles: false,
+    noScripts: false,
+  },
+
+  experimental: {
+    payloadExtraction: false,
+    renderJsonPayloads: false,
+  },
+
   vite: {
     build: {
       rollupOptions: {

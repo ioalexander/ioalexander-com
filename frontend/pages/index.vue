@@ -6,7 +6,9 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({ client: false });
+</script>
 
 <style lang="scss" module>
 .whatIDo {

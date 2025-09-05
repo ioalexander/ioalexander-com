@@ -10,7 +10,18 @@
           automated cloud workflows, I’m ready to help you ship faster, reduce
           errors, and scale with confidence. Reach out and let’s make it happen.
         </p>
-        <LandingContactForm />
+        <ClientOnly>
+          <template #fallback>
+            <p>
+              <br />
+              Without JavaScript, Contact form will not work.
+              <br />
+              Please enable JavaScript
+              <br />
+            </p>
+          </template>
+          <LandingContactForm />
+        </ClientOnly>
       </LandingCenter>
     </LandingMaxWidth>
   </LandingSection>

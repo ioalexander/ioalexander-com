@@ -31,6 +31,8 @@ import { reactive } from "vue";
 import type { BlogIndex } from "~/types/blogIndex";
 import type { BlogPostItem } from "~/types/blogPostItem";
 
+definePageMeta({ client: false });
+
 const blogIndexRaw = `TEMPLATE_STRING_BLOGINDEX`;
 
 const blogIndexData: BlogIndex = JSON.parse(blogIndexRaw);
