@@ -38,17 +38,30 @@ function readManifest(manifestPath: string): BlogPostItemManifest {
   return JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
 }
 
-// --- EXTRACT MARKDOWN WITHOUT ANY ESCAPING ---
 function extractMarkdownData(
   filePath: string,
   slug: string,
 ): { title: string; content: string } {
   const raw = fs.readFileSync(filePath, "utf-8");
   const lines = raw.split("\n");
-  const title = lines[0]?.replace(/^# /, "").trim() || "Untitled";
-  const content = lines.slice(1).join("\n");
 
-  // encode in Base64
+  // Extract title
+  const title = lines[0]?.replace(/^# /, "").trim() || "Untitled";
+
+  // Combine rest as content
+  let content = lines.slice(1).join("\n");
+
+  // Replace Markdown image paths
+  content = content.replace(
+    /!\[([^\]]*)\]\(\.\/media\/([^)]+)\)/g,
+    (_, alt, filename) => {
+      const newFilename =
+        path.basename(filename, path.extname(filename)) + ".webp";
+      return `![${alt}](${domain}/generated/blog/${slug}/media/${newFilename})`;
+    },
+  );
+
+  // Encode in Base64
   const contentBase64 = Buffer.from(content, "utf-8").toString("base64");
 
   return { title, content: contentBase64 };

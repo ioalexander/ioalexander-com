@@ -84,7 +84,7 @@ useHead({
 
   .title {
     margin-bottom: 32px;
-    font-size: 60px;
+    font-size: 50px;
     color: var(--text-secondary);
 
     @media all and (max-width: 800px) {
