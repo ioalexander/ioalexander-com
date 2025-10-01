@@ -14,14 +14,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
         working-directory: ./frontend
         run: |
           yarn global add ts-node typescript
-          yarn install --production --frozen-lockfile
-          yarn cache clean
+          yarn install --frozen-lockfile
 
       - name: Build frontend
         working-directory: ./frontend
