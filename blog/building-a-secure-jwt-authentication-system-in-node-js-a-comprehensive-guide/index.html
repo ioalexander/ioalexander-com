@@ -1,0 +1,191 @@
+<!DOCTYPE html><html  lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building a Secure JWT Authentication System in Node.js: A Comprehensive Guide</title><link rel="stylesheet" href="/_nuxt/entry.BT4vWiYi.css" crossorigin><link rel="stylesheet" href="/_nuxt/blog.jW0ltCgV.css" crossorigin><link rel="stylesheet" href="/_nuxt/index.g6Yesaz_.css" crossorigin><link rel="stylesheet" href="/_nuxt/Panel.T5K3Nd1c.css" crossorigin><link rel="stylesheet" href="/_nuxt/hello-world.BG3oWo11.css" crossorigin><link rel="modulepreload" as="script" crossorigin href="/_nuxt/BxaG1xCO.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DVJXTRjV.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/BO_yQCOR.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/Cg6HVRiJ.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/7AnIT3hj.js"><link rel="preload" as="fetch" fetchpriority="low" crossorigin="anonymous" href="/_nuxt/builds/meta/348eb890-c0ea-4c9b-b4bd-245b0bf0caf5.json"><link rel="prefetch" as="script" crossorigin href="/_nuxt/DZy_XbEx.js"><meta name="description" content="[object Object]..."><meta property="og:title" content="Building a Secure JWT Authentication System in Node.js: A Comprehensive Guide"><meta property="og:image" content="/generated/blog/building-a-secure-jwt-authentication-system-in-node-js-a-comprehensive-guide/preview.webp"><script type="module" src="/_nuxt/BxaG1xCO.js" crossorigin></script></head><body><div id="__nuxt"><div class="_layout_175u4_1"><div class="_container_1qown_1"><header class="_header_1qown_5"><div class="_panel_7qg7f_1 _panel_1qown_16"><!--[--><div class="_content_1qown_23"><a href="/" class="_logo_1qown_49" aria-label="IOAlexander Home"><svg width="144.657mm" height="34.058617mm" viewbox="0 0 144.657 34.058616" version="1.1" id="svg1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" class="_svg_1qown_53"><g id="layer1" transform="translate(-49.078592,71.335165)"><path d="m 68.503642,-62.004014 h 1.852857 v 13.694631 h -1.852857 z m 11.098796,1.256641 q -2.017963,0 -3.210395,1.5043 -1.18326,1.504299 -1.18326,4.100133 0,2.586662 1.18326,4.090962 1.192432,1.504299 3.210395,1.504299 2.017963,0 3.192051,-1.504299 1.18326,-1.5043 1.18326,-4.090962 0,-2.595834 -1.18326,-4.100133 -1.174088,-1.5043 -3.192051,-1.5043 z m 0,-1.5043 q 2.880184,0 4.604625,1.93541 1.724441,1.926238 1.724441,5.173323 0,3.237914 -1.724441,5.173323 -1.724441,1.926238 -4.604625,1.926238 -2.889356,0 -4.622969,-1.926238 -1.724441,-1.926237 -1.724441,-5.173323 0,-3.247085 1.724441,-5.173323 1.733613,-1.93541 4.622969,-1.93541 z m 13.474489,2.072999 -2.513281,6.815211 h 5.035734 z m -1.045672,-1.82534 h 2.100516 l 5.219186,13.694631 H 97.42472 l -1.247468,-3.51309 H 90.00412 l -1.247468,3.51309 h -1.953756 z m 9.245935,-0.577871 h 1.68775 v 14.272502 h -1.68775 z m 14.0065,8.713931 v 0.82553 h -7.75998 q 0.11007,1.742786 1.04567,2.660042 0.94477,0.908084 2.62335,0.908084 0.97229,0 1.88038,-0.238487 0.91725,-0.238486 1.81616,-0.715459 v 1.596025 q -0.90808,0.385247 -1.86203,0.587044 -0.95394,0.201796 -1.93541,0.201796 -2.45824,0 -3.89833,-1.430919 -1.43092,-1.43092 -1.43092,-3.87082 0,-2.522454 1.35754,-3.999236 1.36671,-1.485954 3.67819,-1.485954 2.073,0 3.27461,1.339193 1.21077,1.330021 1.21077,3.623161 z m -1.68775,-0.495318 q -0.0183,-1.385057 -0.77967,-2.210587 -0.75214,-0.82553 -1.99961,-0.82553 -1.41258,0 -2.26562,0.798012 -0.84388,0.798013 -0.9723,2.247277 z m 12.66731,-4.219377 -3.71489,4.999044 3.90751,5.274222 h -1.99045 l -2.99025,-4.035926 -2.99025,4.035926 h -1.99045 l 3.99006,-5.37512 -3.65068,-4.898146 h 1.99045 l 2.72425,3.659851 2.72425,-3.659851 z m 7.24632,5.109115 q -2.04548,0 -2.83432,0.467801 -0.78884,0.4678 -0.78884,1.596025 0,0.89891 0.58704,1.430919 0.59622,0.522836 1.61437,0.522836 1.4034,0 2.24728,-0.990637 0.85305,-0.999808 0.85305,-2.650869 v -0.376075 z m 3.36633,-0.697114 v 5.861265 h -1.68775 v -1.559335 q -0.57788,0.935601 -1.4401,1.385056 -0.86222,0.440283 -2.10968,0.440283 -1.57769,0 -2.51329,-0.880566 -0.92642,-0.889738 -0.92642,-2.375693 0,-1.733613 1.15574,-2.614179 1.16491,-0.880565 3.46723,-0.880565 h 2.36652 v -0.165107 q 0,-1.164914 -0.7705,-1.797821 -0.76132,-0.642079 -2.14638,-0.642079 -0.88056,0 -1.71527,0.210969 -0.8347,0.210969 -1.60519,0.632906 v -1.559335 q 0.92642,-0.35773 1.79782,-0.532008 0.87139,-0.183451 1.69692,-0.183451 2.22893,0 3.32964,1.155742 1.10071,1.155742 1.10071,3.503918 z m 12.01605,-0.339385 v 6.20065 h -1.68775 v -6.145615 q 0,-1.458437 -0.5687,-2.183069 -0.5687,-0.724632 -1.7061,-0.724632 -1.36671,0 -2.15555,0.871393 -0.78884,0.871393 -0.78884,2.375693 v 5.80623 h -1.69692 v -10.273266 h 1.69692 v 1.596025 q 0.60539,-0.926428 1.42175,-1.385056 0.82553,-0.458628 1.89872,-0.458628 1.7703,0 2.67839,1.100707 0.90808,1.091534 0.90808,3.219568 z m 10.12651,-2.513281 v -5.558571 h 1.68775 v 14.272502 h -1.68775 v -1.54099 q -0.53201,0.917256 -1.34837,1.366711 -0.80719,0.440283 -1.94458,0.440283 -1.86203,0 -3.03612,-1.485955 -1.16491,-1.485954 -1.16491,-3.90751 0,-2.421555 1.16491,-3.90751 1.17409,-1.485954 3.03612,-1.485954 1.13739,0 1.94458,0.449455 0.81636,0.440283 1.34837,1.357539 z m -5.7512,3.58647 q 0,1.86203 0.76132,2.926046 0.7705,1.054845 2.10969,1.054845 1.3392,0 2.10969,-1.054845 0.7705,-1.064016 0.7705,-2.926046 0,-1.862029 -0.7705,-2.916873 -0.77049,-1.064017 -2.10969,-1.064017 -1.33919,0 -2.10969,1.064017 -0.76132,1.054844 -0.76132,2.916873 z m 19.70266,-0.43111 v 0.82553 h -7.75999 q 0.11007,1.742786 1.04567,2.660042 0.94478,0.908084 2.62335,0.908084 0.9723,0 1.88038,-0.238487 0.91725,-0.238486 1.81617,-0.715459 v 1.596025 q -0.90809,0.385247 -1.86203,0.587044 -0.95395,0.201796 -1.93541,0.201796 -2.45825,0 -3.89834,-1.430919 -1.43092,-1.43092 -1.43092,-3.87082 0,-2.522454 1.35754,-3.999236 1.36671,-1.485954 3.67819,-1.485954 2.073,0 3.27461,1.339193 1.21078,1.330021 1.21078,3.623161 z m -1.68776,-0.495318 q -0.0183,-1.385057 -0.77966,-2.210587 -0.75215,-0.82553 -1.99962,-0.82553 -1.41257,0 -2.26562,0.798012 -0.84388,0.798013 -0.97229,2.247277 z m 10.41086,-2.641697 q -0.28435,-0.165106 -0.62373,-0.238487 -0.33022,-0.08255 -0.73381,-0.08255 -1.43092,0 -2.20141,0.935601 -0.76132,0.926429 -0.76132,2.669215 v 5.41181 h -1.69693 v -10.273266 h 1.69693 v 1.596025 q 0.532,-0.935601 1.38505,-1.385056 0.85305,-0.458628 2.073,-0.458628 0.17428,0 0.38525,0.02752 0.21097,0.01834 0.4678,0.06421 z" id="object-0" style="font-weight:474;font-size:18.7854px;font-family:Alexandria;white-space:pre;fill:#fcfcfc;stroke-width:0.264583;"></path><rect style="fill:#14dbff;fill-opacity:1;stroke-width:0.264583;" id="rect1" width="3.5667579" height="20.259186" x="59.208183" y="-65.200333"></rect></g></svg></a><div></div><nav class="_nav_1qown_32"><ul class="_list_1qown_38"><li class="_item_1qown_45"><a href="/blog" class="_link_1qown_45">Blog</a></li><li class="_item_1qown_45"><a href="/find-me" class="_link_1qown_45">Find me</a></li></ul></nav></div><!--]--></div></header></div><div class="_content_175u4_4"><!--[--><div></div><article class="_container_g8988_1"><div class="_featuredImage_g8988_12"><img src="/generated/blog/building-a-secure-jwt-authentication-system-in-node-js-a-comprehensive-guide/preview.webp" class="_img_g8988_20"></div><h1 class="_title_g8988_26">Building a Secure JWT Authentication System in Node.js: A Comprehensive Guide</h1><div class="_content_g8988_41"><p>Introduction to JWT Authentication</p>
+<p>JSON Web Tokens (JWT) have become the backbone of modern authentication systems, offering stateless, scalable, and secure user management. Unlike traditional session-based authentication, JWT allows servers to offload user state data to tokens, reducing database overhead and enabling seamless scalability. In this guide, we’ll build a production-ready JWT authentication system using Node.js, Express, and MongoDB, covering everything from password hashing to refresh token rotation.</p>
+<p>The Anatomy of JSON Web Tokens</p>
+<p>At its core, a JSON Web Token (JWT) is a compact, URL-safe means of representing claims between two parties. These claims are encoded as a JSON object and digitally signed using a secret or public/private key pair. The structure of a JWT is divided into three distinct parts, each separated by a dot: the header, the payload, and the signature.</p>
+<p>The header typically consists of two components: the type of token, which is JWT, and the signing algorithm being used, such as HMAC SHA256 or RSA. This information is Base64Url encoded to form the first part of the token. The payload contains the claims—statements about an entity (typically the user) and additional metadata. Claims can be registered (standard fields like iss for issuer or exp for expiration time), public (defined by those using JWTs), or private (custom claims specific to an application). It’s critical to avoid storing sensitive information in the payload, as JWTs are easily decoded by anyone who intercepts them.</p>
+<p>The signature ensures the integrity of the token. It is generated by combining the encoded header, encoded payload, and a secret key (or private key, in asymmetric encryption), then applying the hashing algorithm specified in the header. This step is what makes JWTs trustworthy: any alteration to the token after it’s signed will invalidate the signature, alerting the server to potential tampering.</p>
+<p>While JWTs are self-contained, this very property introduces challenges. For instance, tokens cannot be revoked before their expiration time without additional mechanisms, such as a token denylist or short-lived tokens paired with refresh tokens. This trade-off between statelessness and control is a key consideration when designing authentication systems.</p>
+<p>Stateless Authentication: A Double-Edged Sword</p>
+<p>One of the most lauded features of JWT-based authentication is its statelessness. Traditional session-based systems require the server to store session data in a database or cache, creating a dependency that complicates scalability. Every request in such systems must validate the session ID against this storage layer, introducing latency and potential bottlenecks.</p>
+<p>JWTs eliminate this problem by embedding user identity and permissions directly within the token. The server need only validate the token’s signature and check its expiration time to grant access. This makes JWT ideal for distributed systems, microservices architectures, or applications where horizontal scaling is a priority.</p>
+<p>However, statelessness comes with caveats. Since tokens are self-contained, they must include all necessary information for the server to make access decisions. This often leads to larger token sizes, which can impact performance when tokens are frequently transmitted over the network. Additionally, the inability to invalidate tokens mid-lifecycle means developers must implement creative solutions for scenarios like user logout or password resets. A common pattern is to use short-lived access tokens (e.g., 15 minutes) paired with long-lived refresh tokens. When a user logs out, the refresh token is revoked on the server, rendering both tokens useless once the access token expires.</p>
+<p>Security Pitfalls and Mitigations</p>
+<p>While JWTs are powerful, misconfigurations can expose applications to severe vulnerabilities. One notorious example is the none algorithm attack, where an attacker strips the signature from a token and sets the algorithm header to none, tricking poorly configured servers into accepting unsigned tokens. To prevent this, developers must explicitly specify the allowed algorithms during token verification.</p>
+<p>Another common issue is token leakage through insecure storage. Storing tokens in browser localStorage makes them susceptible to cross-site scripting (XSS) attacks, where malicious scripts can exfiltrate tokens. Instead, tokens should be stored in HTTP-only cookies, which are inaccessible to JavaScript. For added security, cookies should be marked Secure and SameSite to prevent cross-site request forgery (CSRF) attacks.</p>
+<p>Even with these precautions, developers must remain vigilant about token expiration times. Overly long expiration windows increase the risk of token theft and misuse. A balance must be struck between user convenience (avoiding frequent logins) and security. Implementing refresh tokens with strict server-side revocation policies can help mitigate this risk.</p>
+<p>The Role of Middleware in Authentication</p>
+<p>Middleware functions in Express.js act as gatekeepers for incoming requests, enabling developers to inject logic at specific points in the request-response cycle. In the context of JWT authentication, middleware performs two critical tasks: token validation and user context propagation.</p>
+<p>When a request arrives at the server, the middleware first extracts the token from the designated storage location—commonly the Authorization header or an HTTP-only cookie. It then verifies the token’s signature using the secret key, ensuring it hasn’t been tampered with. If the token is valid, the middleware fetches the corresponding user details from the database and attaches them to the req object, allowing subsequent route handlers to access user data without redundant database queries.</p>
+<p>This process, while seemingly straightforward, requires careful error handling. For instance, expired tokens should trigger a 401 Unauthorized response, prompting the client to attempt a refresh. Invalid or malformed tokens, on the other hand, warrant a 403 Forbidden response to signal a potential security breach. Middleware must also handle edge cases, such as tokens signed with incorrect algorithms or tokens missing required claims.</p>
+<p>Token Refresh Strategies</p>
+<p>Refresh tokens are the linchpin of a seamless user experience. Unlike access tokens, which are short-lived, refresh tokens have longer lifespans (days or weeks) and are used solely to obtain new access tokens. When an access token expires, the client sends the refresh token to a dedicated /refresh endpoint. The server validates the refresh token, checks its revocation status, and issues a new access token if all conditions are met.</p>
+<p>To enhance security, refresh tokens should be rotated with every use. This means that each time a refresh token is exchanged for a new access token, the server invalidates the old refresh token and issues a new one. This practice limits the window of opportunity for an attacker to misuse a stolen refresh token.</p>
+<p>Project Setup</p>
+<p>Before diving into code, ensure you have Node.js and MongoDB installed. Create a new project directory and initialize it:</p>
+<pre><code>mkdir jwt-auth-system  
+cd jwt-auth-system  
+npm init -y
+</code></pre>
+<p>Install essential dependencies:</p>
+<pre><code>npm install express mongoose bcrypt jsonwebtoken cookie-parser dotenv  
+npm install nodemon --save-dev
+</code></pre>
+<p>Configuring the Express Server</p>
+<p>Start by setting up a basic Express server. Create app.js:</p>
+<pre><code>const express = require('express');  
+const mongoose = require('mongoose');  
+const cookieParser = require('cookie-parser');  
+require('dotenv').config();  
+
+const app = express();  
+
+// Middleware  
+app.use(express.json());  
+app.use(cookieParser());  
+
+// Database connection  
+mongoose.connect(process.env.MONGO_URI)  
+  .then(() =&gt; console.log('Connected to MongoDB'))  
+  .catch(err =&gt; console.error(err));  
+
+// Routes  
+app.use('/api/auth', require('./routes/auth'));  
+
+const PORT = process.env.PORT || 5000;  
+app.listen(PORT, () =&gt; console.log(`Server running on port ${PORT}`));
+</code></pre>
+<p>User Model and Password Hashing</p>
+<p>Create a User schema in models/User.js using Mongoose. Use bcrypt to securely hash passwords:</p>
+<pre><code>const mongoose = require('mongoose');  
+const bcrypt = require('bcrypt');  
+
+const userSchema = new mongoose.Schema({  
+  email: { type: String, required: true, unique: true },  
+  password: { type: String, required: true },  
+  refreshToken: { type: String }  
+});  
+
+// Hash password before saving  
+userSchema.pre('save', async function (next) {  
+  if (!this.isModified('password')) return next();  
+  const salt = await bcrypt.genSalt(10);  
+  this.password = await bcrypt.hash(this.password, salt);  
+  next();  
+});  
+
+module.exports = mongoose.model('User', userSchema);
+</code></pre>
+<p>Key Security Note:
+Always hash passwords before storing them. Plaintext passwords are a critical vulnerability.</p>
+<p>Registration and Login Endpoints</p>
+<p>Implement /api/auth/register and /api/auth/login routes in routes/auth.js:</p>
+<p>Registration:</p>
+<pre><code>const express = require('express');  
+const router = express.Router();  
+const User = require('../models/User');  
+const bcrypt = require('bcrypt');  
+const jwt = require('jsonwebtoken');  
+
+// Register User  
+router.post('/register', async (req, res) =&gt; {  
+  try {  
+    const { email, password } = req.body;  
+    const userExists = await User.findOne({ email });  
+    if (userExists) return res.status(400).json({ message: 'User already exists' });  
+
+    const user = new User({ email, password });  
+    await user.save();  
+    res.status(201).json({ message: 'User registered successfully' });  
+  } catch (err) {  
+    res.status(500).json({ message: 'Server error' });  
+  }  
+});
+</code></pre>
+<p>Login:</p>
+<pre><code>router.post('/login', async (req, res) =&gt; {  
+  try {  
+    const { email, password } = req.body;  
+    const user = await User.findOne({ email });  
+    if (!user) return res.status(401).json({ message: 'Invalid credentials' });  
+
+    const isMatch = await bcrypt.compare(password, user.password);  
+    if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });  
+
+    // Generate tokens (explained next)  
+  } catch (err) {  
+    res.status(500).json({ message: 'Server error' });  
+  }  
+});
+</code></pre>
+<p>JWT Token Generation and Refresh Tokens</p>
+<p>JWTs consist of three parts: header, payload, and signature. Use the jsonwebtoken library to generate tokens:</p>
+<pre><code>const generateAccessToken = (user) =&gt; {  
+  return jwt.sign(  
+    { id: user._id },  
+    process.env.ACCESS_TOKEN_SECRET,  
+    { expiresIn: '15m' }  
+  );  
+};
+</code></pre>
+<pre><code>const generateRefreshToken = (user) =&gt; {  
+  return jwt.sign(  
+    { id: user._id },  
+    process.env.REFRESH_TOKEN_SECRET,  
+    { expiresIn: '7d' }  
+  );  
+};
+</code></pre>
+<pre><code>// Inside login route  
+const accessToken = generateAccessToken(user);  
+const refreshToken = generateRefreshToken(user);  
+
+// Save refreshToken to user in DB  
+user.refreshToken = refreshToken;  
+await user.save();  
+
+// Set HTTP-only cookie  
+res.cookie('refreshToken', refreshToken, {  
+  httpOnly: true,  
+  secure: process.env.NODE_ENV === 'production',  
+  maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days  
+});  
+
+res.json({ accessToken });
+</code></pre>
+<p>Store refresh tokens in the database and send them via HTTP-only cookies for security.</p>
+<p>Middleware for Protected Routes</p>
+<pre><code>const protect = async (req, res, next) =&gt; {  
+  const token = req.cookies.refreshToken;  
+  if (!token) return res.status(401).json({ message: 'Unauthorized' });  
+
+  try {  
+    const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);  
+    const user = await User.findById(decoded.id);  
+    if (!user || user.refreshToken !== token) {  
+      return res.status(401).json({ message: 'Unauthorized' });  
+    }  
+    req.user = user;  
+    next();  
+  } catch (err) {  
+    res.status(401).json({ message: 'Invalid token' });  
+  }  
+};  
+
+// Example protected route  
+router.get('/profile', protect, (req, res) =&gt; {  
+  res.json({ user: req.user });  
+});
+</code></pre>
+<p>Security Best Practices</p>
+<p>HTTP-Only Cookies: Prevent XSS attacks by storing tokens in cookies.</p>
+<p>Environment Variables: Use dotenv to store secrets like JWT_SECRET.</p>
+<p>Rate Limiting: Implement express-rate-limit to block brute-force attacks.</p>
+<p>CORS: Restrict origins using cors middleware.</p>
+<p>Testing and Deployment</p>
+<p>Use Postman or Jest to test endpoints. For deployment:</p>
+<p>Use helmet to secure headers.</p>
+<p>Set up HTTPS with Let’s Encrypt.</p>
+<p>Monitor logs with winston or morgan.</p>
+<p>Conclusion</p>
+<p>JWT authentication is a powerful tool for modern applications, but its security depends on proper implementation. By following this guide, you’ve learned to hash passwords, manage tokens securely, and protect routes effectively. Always stay updated with OWASP guidelines to mitigate emerging threats.</p>
+</div></article><!--]--></div><footer class="_footer_16fws_1"><div class="_panel_7qg7f_1 _panel_16fws_8"><!--[--><div class="_content_16fws_16"><a href="/" class="_logo_16fws_30" aria-label="IOAlexander Home"><svg width="144.657mm" height="34.058617mm" viewbox="0 0 144.657 34.058616" version="1.1" id="svg1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" class="_svg_16fws_33"><g id="layer1" transform="translate(-49.078592,71.335165)"><path d="m 68.503642,-62.004014 h 1.852857 v 13.694631 h -1.852857 z m 11.098796,1.256641 q -2.017963,0 -3.210395,1.5043 -1.18326,1.504299 -1.18326,4.100133 0,2.586662 1.18326,4.090962 1.192432,1.504299 3.210395,1.504299 2.017963,0 3.192051,-1.504299 1.18326,-1.5043 1.18326,-4.090962 0,-2.595834 -1.18326,-4.100133 -1.174088,-1.5043 -3.192051,-1.5043 z m 0,-1.5043 q 2.880184,0 4.604625,1.93541 1.724441,1.926238 1.724441,5.173323 0,3.237914 -1.724441,5.173323 -1.724441,1.926238 -4.604625,1.926238 -2.889356,0 -4.622969,-1.926238 -1.724441,-1.926237 -1.724441,-5.173323 0,-3.247085 1.724441,-5.173323 1.733613,-1.93541 4.622969,-1.93541 z m 13.474489,2.072999 -2.513281,6.815211 h 5.035734 z m -1.045672,-1.82534 h 2.100516 l 5.219186,13.694631 H 97.42472 l -1.247468,-3.51309 H 90.00412 l -1.247468,3.51309 h -1.953756 z m 9.245935,-0.577871 h 1.68775 v 14.272502 h -1.68775 z m 14.0065,8.713931 v 0.82553 h -7.75998 q 0.11007,1.742786 1.04567,2.660042 0.94477,0.908084 2.62335,0.908084 0.97229,0 1.88038,-0.238487 0.91725,-0.238486 1.81616,-0.715459 v 1.596025 q -0.90808,0.385247 -1.86203,0.587044 -0.95394,0.201796 -1.93541,0.201796 -2.45824,0 -3.89833,-1.430919 -1.43092,-1.43092 -1.43092,-3.87082 0,-2.522454 1.35754,-3.999236 1.36671,-1.485954 3.67819,-1.485954 2.073,0 3.27461,1.339193 1.21077,1.330021 1.21077,3.623161 z m -1.68775,-0.495318 q -0.0183,-1.385057 -0.77967,-2.210587 -0.75214,-0.82553 -1.99961,-0.82553 -1.41258,0 -2.26562,0.798012 -0.84388,0.798013 -0.9723,2.247277 z m 12.66731,-4.219377 -3.71489,4.999044 3.90751,5.274222 h -1.99045 l -2.99025,-4.035926 -2.99025,4.035926 h -1.99045 l 3.99006,-5.37512 -3.65068,-4.898146 h 1.99045 l 2.72425,3.659851 2.72425,-3.659851 z m 7.24632,5.109115 q -2.04548,0 -2.83432,0.467801 -0.78884,0.4678 -0.78884,1.596025 0,0.89891 0.58704,1.430919 0.59622,0.522836 1.61437,0.522836 1.4034,0 2.24728,-0.990637 0.85305,-0.999808 0.85305,-2.650869 v -0.376075 z m 3.36633,-0.697114 v 5.861265 h -1.68775 v -1.559335 q -0.57788,0.935601 -1.4401,1.385056 -0.86222,0.440283 -2.10968,0.440283 -1.57769,0 -2.51329,-0.880566 -0.92642,-0.889738 -0.92642,-2.375693 0,-1.733613 1.15574,-2.614179 1.16491,-0.880565 3.46723,-0.880565 h 2.36652 v -0.165107 q 0,-1.164914 -0.7705,-1.797821 -0.76132,-0.642079 -2.14638,-0.642079 -0.88056,0 -1.71527,0.210969 -0.8347,0.210969 -1.60519,0.632906 v -1.559335 q 0.92642,-0.35773 1.79782,-0.532008 0.87139,-0.183451 1.69692,-0.183451 2.22893,0 3.32964,1.155742 1.10071,1.155742 1.10071,3.503918 z m 12.01605,-0.339385 v 6.20065 h -1.68775 v -6.145615 q 0,-1.458437 -0.5687,-2.183069 -0.5687,-0.724632 -1.7061,-0.724632 -1.36671,0 -2.15555,0.871393 -0.78884,0.871393 -0.78884,2.375693 v 5.80623 h -1.69692 v -10.273266 h 1.69692 v 1.596025 q 0.60539,-0.926428 1.42175,-1.385056 0.82553,-0.458628 1.89872,-0.458628 1.7703,0 2.67839,1.100707 0.90808,1.091534 0.90808,3.219568 z m 10.12651,-2.513281 v -5.558571 h 1.68775 v 14.272502 h -1.68775 v -1.54099 q -0.53201,0.917256 -1.34837,1.366711 -0.80719,0.440283 -1.94458,0.440283 -1.86203,0 -3.03612,-1.485955 -1.16491,-1.485954 -1.16491,-3.90751 0,-2.421555 1.16491,-3.90751 1.17409,-1.485954 3.03612,-1.485954 1.13739,0 1.94458,0.449455 0.81636,0.440283 1.34837,1.357539 z m -5.7512,3.58647 q 0,1.86203 0.76132,2.926046 0.7705,1.054845 2.10969,1.054845 1.3392,0 2.10969,-1.054845 0.7705,-1.064016 0.7705,-2.926046 0,-1.862029 -0.7705,-2.916873 -0.77049,-1.064017 -2.10969,-1.064017 -1.33919,0 -2.10969,1.064017 -0.76132,1.054844 -0.76132,2.916873 z m 19.70266,-0.43111 v 0.82553 h -7.75999 q 0.11007,1.742786 1.04567,2.660042 0.94478,0.908084 2.62335,0.908084 0.9723,0 1.88038,-0.238487 0.91725,-0.238486 1.81617,-0.715459 v 1.596025 q -0.90809,0.385247 -1.86203,0.587044 -0.95395,0.201796 -1.93541,0.201796 -2.45825,0 -3.89834,-1.430919 -1.43092,-1.43092 -1.43092,-3.87082 0,-2.522454 1.35754,-3.999236 1.36671,-1.485954 3.67819,-1.485954 2.073,0 3.27461,1.339193 1.21078,1.330021 1.21078,3.623161 z m -1.68776,-0.495318 q -0.0183,-1.385057 -0.77966,-2.210587 -0.75215,-0.82553 -1.99962,-0.82553 -1.41257,0 -2.26562,0.798012 -0.84388,0.798013 -0.97229,2.247277 z m 10.41086,-2.641697 q -0.28435,-0.165106 -0.62373,-0.238487 -0.33022,-0.08255 -0.73381,-0.08255 -1.43092,0 -2.20141,0.935601 -0.76132,0.926429 -0.76132,2.669215 v 5.41181 h -1.69693 v -10.273266 h 1.69693 v 1.596025 q 0.532,-0.935601 1.38505,-1.385056 0.85305,-0.458628 2.073,-0.458628 0.17428,0 0.38525,0.02752 0.21097,0.01834 0.4678,0.06421 z" id="object-0" style="font-weight:474;font-size:18.7854px;font-family:Alexandria;white-space:pre;fill:#fcfcfc;stroke-width:0.264583;"></path><rect style="fill:#14dbff;fill-opacity:1;stroke-width:0.264583;" id="rect1" width="3.5667579" height="20.259186" x="59.208183" y="-65.200333"></rect></g></svg></a><nav class="_nav_16fws_37"><ul class="_list_16fws_37"><li class="_item_16fws_41"><a href="/blog" class="_url_16fws_44">Blog</a></li><li class="_item_16fws_41"><a href="/find-me" class="_url_16fws_44">Find me</a></li></ul></nav><nav class="_nav_16fws_37"><ul class="_list_16fws_37"><li class="_item_16fws_41"><a href="https://github.com/ioalexander/" rel="noopener noreferrer" class="_url_16fws_44">GitHub</a></li><li class="_item_16fws_41"><a href="https://www.linkedin.com/in/alexander-sudnik/?utm_source=ioalexandercom" rel="noopener noreferrer" class="_url_16fws_44">Linked-in</a></li></ul></nav></div><!--]--></div></footer></div></div><div id="teleports"></div><script>window.__NUXT__=(function(a,b,c){return {prerenderedAt:1759348616480,data:{},state:{"$ssite-config":{_priority:{name:a,env:-15,url:a},env:"production",name:"IOAlexander",url:b}},once:new Set([]),_errors:{},serverRendered:true,path:"\u002Fblog\u002Fbuilding-a-secure-jwt-authentication-system-in-node-js-a-comprehensive-guide",config:{public:{turnstile:{siteKey:"0x4AAAAAABlobP7fchYyYgqM"},domain:b,apiBase:"https:\u002F\u002Fioalexander.com\u002Fapi","nuxt-scripts":{version:c,defaultScriptOptions:{trigger:"onNuxtReady"}}},app:{baseURL:"\u002F",buildId:"348eb890-c0ea-4c9b-b4bd-245b0bf0caf5",buildAssetsDir:"\u002F_nuxt\u002F",cdnURL:c}}}}(-3,"https:\u002F\u002Fioalexander.com\u002F",""))</script></body></html>

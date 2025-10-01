@@ -1,0 +1,1 @@
+import{_ as e,c as n,o,r as t,n as a}from"./BxaG1xCO.js";const l="_panel_7qg7f_1",c={panel:l},_={};function r(s,d){return o(),n("div",{class:a([s.$style.panel])},[t(s.$slots,"default")],2)}const p={$style:c},m=Object.assign(e(_,[["render",r],["__cssModules",p]]),{__name:"ControlsPanel"});export{m as _};
